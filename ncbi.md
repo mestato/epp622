@@ -42,7 +42,7 @@ Check out the file this yielded. This is actually still a bit odd - it arrived i
 fastq-dump --split-files SRR1778760
 ls
 ```
-
+Demo run selector. 
 
 ##EUtils
 
