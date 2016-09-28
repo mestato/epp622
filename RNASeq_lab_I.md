@@ -302,6 +302,9 @@ cat alignment_rapmap/flagstat_output/DRR016125_flagstat.txt
 0 + 0 singletons (0.00% : N/A)
 0 + 0 with mate mapped to a different chr
 0 + 0 with mate mapped to a different chr (mapQ>=5)
+
+
+
 [Newton:sigma00 RNASeq_lab_I]$ cat alignment_hisat2/flagstat_output/DRR016125_flagstat.txt
 259048 + 0 in total (QC-passed reads + QC-failed reads)
 15780 + 0 secondary
@@ -316,6 +319,9 @@ cat alignment_rapmap/flagstat_output/DRR016125_flagstat.txt
 1957 + 0 singletons (0.80% : N/A)
 96 + 0 with mate mapped to a different chr
 25 + 0 with mate mapped to a different chr (mapQ>=5)
+
+
+
 [Newton:sigma00 RNASeq_lab_I]$ cat alignment_rapmap/flagstat_output/DRR016125_flagstat.txt
 335196 + 0 in total (QC-passed reads + QC-failed reads)
 109792 + 0 secondary
