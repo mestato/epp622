@@ -13,7 +13,7 @@ do
                 -t gene \
                 -s no \
                 -i gene_id  \
-                sorted bam \
+                sorted_bam_path \
                 /data/home/mchen33/RNASeq_lab_I/0_raw_data/Arabidopsis_thaliana.TAIR10.28.gtf > ~/RNASeq_lab_I/counts_$1/counts_file
 done
 ```
