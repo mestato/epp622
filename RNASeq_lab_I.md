@@ -138,7 +138,7 @@ rmdir ~/RNASeq_lab_I/0_raw_data/0_raw_reads/      ## remove the empty directory 
     mkdir genomeDir  ## again, we create a directory for the genome indices
     
     hisat2-build -p 4 \
-                 ../0_raw_data/Arabidopsis_thaliana.TAIR10.28.dna.genome.fa
+                 ../0_raw_data/Arabidopsis_thaliana.TAIR10.28.dna.genome.fa \
                  ./genomeDir/Athal_index
     ```
     
