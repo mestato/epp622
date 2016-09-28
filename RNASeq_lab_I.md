@@ -166,6 +166,20 @@ tar -xvzf rnaseq_labs_data.tar.gz
     * `-S`: output to a SAM file. Default is stdout.
     * `-p`: the number of threads to use.
 
+3. __Generate sorted bam files__
+
+    * __hisat2__ does not generate sorted bam file automatically. We will need to use __samtools__ to convert the sam files to sorted bam fles.
+    
+    ```{php}
+    cd ~/RNASeq_lab_I/alignment_hisat2
+    mkdir sorted_bam
+    
+    for i in `seq 25 40`
+    do
+       samtools sort ./alignment_output/DRR0161${i}.sam -o ./sorted_bam/DRR0161${i}_sorted.bam
+    done
+    ```
+    
 ### RapMap 
 
 1. __Index reference genome__
