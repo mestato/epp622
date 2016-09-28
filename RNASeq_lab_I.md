@@ -248,7 +248,7 @@ mkdir flagstat_output
 
 for i in `seq 25 40`
 do
-   samtools flagstat ./sorted_bam/DRR0161${i}_sorted.bam > DRR0161${i}_flagstat.txt
+   samtools flagstat ./sorted_bam/DRR0161${i}_sorted.bam > ./flagstat_output/DRR0161${i}_flagstat.txt
 done
 ```
 
@@ -260,7 +260,7 @@ mkdir flagstat_output
 
 for i in `seq 25 40`
 do
-   samtools flagstat ./sorted_bam/DRR0161${i}_sorted.bam > DRR0161${i}_flagstat.txt
+   samtools flagstat ./sorted_bam/DRR0161${i}_sorted.bam > ./flagstat_output/DRR0161${i}_flagstat.txt
 done
 ```
 
@@ -272,6 +272,6 @@ mkdir flagstat_output
 
 for i in `seq 25 40`
 do
-   samtools flagstat ./sorted_bam/DRR0161${i}_sorted.bam > DRR0161${i}_flagstat.txt
+   samtools flagstat ./sorted_bam/DRR0161${i}_sorted.bam > ./flagstat_output/DRR0161${i}_flagstat.txt
 done
 ```
