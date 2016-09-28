@@ -66,8 +66,10 @@ gunzip *gz ## uncompress all .gz files in your current directory
 
 ```{php}
 cd ~/RNASeq_lab_I/0_raw_data
-cp /data/home/mchen33/EPP622_2016_fall/rnaseq_labs_data.tar.gz
+cp /data/home/mchen33/EPP622_2016_fall/rnaseq_labs_data.tar.gz ./
 tar -xvzf rnaseq_labs_data.tar.gz 
+mv 0_raw_reads/* ./     ## move the reads files to '~/RNASeq_lab_I/0_raw_data/0_raw_data'
+rmdir 0_raw_reads/      ## remove the empty directory '~/RNASeq_lab_I/0_raw_data/0_raw_data
 ```
 
 ## RNASeq alignment/mapping: *STAR*, *HISAT2* and *RapMap*
