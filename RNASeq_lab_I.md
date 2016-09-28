@@ -83,7 +83,7 @@ rmdir ~/RNASeq_lab_I/0_raw_data/0_raw_reads/      ## remove the empty directory 
     mkdir alignment_STAR && cd alignment_STAR
     mkdir genomeDir
     
-    star --runMode genomeGenerate     \
+    STAR --runMode genomeGenerate     \
         --genomeDir ./genomeDir       \
         --genomeFastaFiles ../0_raw_data/Arabidopsis_thaliana.TAIR10.28.dna.genome.fa  \
         --runThreadN 4      \
@@ -114,7 +114,7 @@ rmdir ~/RNASeq_lab_I/0_raw_data/0_raw_reads/      ## remove the empty directory 
         
         for i in `seq 25 40`
         do
-             star --genomeDir ./genomeDir       \
+             STAR --genomeDir ./genomeDir       \
                   --readFilesIn ../0_raw_data/DRR0161${i}_1.1percent.fastq ../0_raw_data/DRR0161${i}_2.1percent.fastq      \
                   --outFileNamePrefix ./alignment_output/DRR0161${i}_  \
                   --outSAMtype BAM SortedByCoordinate     \
