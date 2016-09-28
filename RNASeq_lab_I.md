@@ -128,4 +128,12 @@ tar -xvzf rnaseq_labs_data.tar.gz
 
 ### HISAT2
 
+1. __Index reference genome__
+
+2. __Align the reads__
+
 ### RapMap 
+
+1. __Index reference genome__
+
+2. __Align the reads__
