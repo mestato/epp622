@@ -209,11 +209,13 @@ tar -xvzf rnaseq_labs_data.tar.gz
                -i ./transcriptomeDir    \
                -1 ../0_raw_data/DRR0161${i}_1.1percent.fastq    \
                -2 ../0_raw_data/DRR0161${i}_2.1percent.fastq    \
-               -o ./alignment_output/DRR0161${i}.sam
+               -t 4     \
+               -o ./alignment_output/DRR0161${i}.sam    
     done
     ```
     
     * `quansimap`: map reads using the suffix-array based method, should match the method you used for indexing.
     * `-1`: specifies the first set of reads from a paired library.
     * `-2`: specifies the second set of reads from a paired library.
+    * `-t`: number of threads to use.
     * `-o`: path to the file where the output should be written.
