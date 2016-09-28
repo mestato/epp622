@@ -275,3 +275,59 @@ do
    samtools flagstat ./sorted_bam/DRR0161${i}_sorted.bam > ./flagstat_output/DRR0161${i}_flagstat.txt
 done
 ```
+
+
+### Comparison of flagstat results
+
+```{php}
+cd /data/home/mchen33/RNASeq_lab_I
+
+cat alignment_STAR/flagstat_output/DRR016125_flagstat.txt
+cat alignment_hisat2/flagstat_output/DRR016125_flagstat.txt
+cat alignment_rapmap/flagstat_output/DRR016125_flagstat.txt
+```
+
+```{php}
+[Newton:sigma00 RNASeq_lab_I]$ cat alignment_STAR/flagstat_output/DRR016125_flagstat.txt
+256344 + 0 in total (QC-passed reads + QC-failed reads)
+16598 + 0 secondary
+0 + 0 supplementary
+0 + 0 duplicates
+256344 + 0 mapped (100.00% : N/A)
+239746 + 0 paired in sequencing
+119873 + 0 read1
+119873 + 0 read2
+239746 + 0 properly paired (100.00% : N/A)
+239746 + 0 with itself and mate mapped
+0 + 0 singletons (0.00% : N/A)
+0 + 0 with mate mapped to a different chr
+0 + 0 with mate mapped to a different chr (mapQ>=5)
+[Newton:sigma00 RNASeq_lab_I]$ cat alignment_hisat2/flagstat_output/DRR016125_flagstat.txt
+259048 + 0 in total (QC-passed reads + QC-failed reads)
+15780 + 0 secondary
+0 + 0 supplementary
+0 + 0 duplicates
+255423 + 0 mapped (98.60% : N/A)
+243268 + 0 paired in sequencing
+121634 + 0 read1
+121634 + 0 read2
+234974 + 0 properly paired (96.59% : N/A)
+237686 + 0 with itself and mate mapped
+1957 + 0 singletons (0.80% : N/A)
+96 + 0 with mate mapped to a different chr
+25 + 0 with mate mapped to a different chr (mapQ>=5)
+[Newton:sigma00 RNASeq_lab_I]$ cat alignment_rapmap/flagstat_output/DRR016125_flagstat.txt
+335196 + 0 in total (QC-passed reads + QC-failed reads)
+109792 + 0 secondary
+0 + 0 supplementary
+0 + 0 duplicates
+331260 + 0 mapped (98.83% : N/A)
+225404 + 0 paired in sequencing
+112702 + 0 read1
+112702 + 0 read2
+220072 + 0 properly paired (97.63% : N/A)
+220072 + 0 with itself and mate mapped
+2666 + 0 singletons (1.18% : N/A)
+0 + 0 with mate mapped to a different chr
+0 + 0 with mate mapped to a different chr (mapQ>=5)
+```
