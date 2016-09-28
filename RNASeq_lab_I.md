@@ -171,16 +171,16 @@ rmdir ~/RNASeq_lab_I/0_raw_data/0_raw_reads/      ## remove the empty directory 
 3. __Generate sorted bam files__
 
     * __hisat2__ does not generate sorted bam file automatically. We will need to use __samtools__ to convert the sam files to sorted bam fles.
-    
-    ```{php}
-    cd ~/RNASeq_lab_I/alignment_hisat2
-    mkdir sorted_bam
-    
-    for i in `seq 25 40`
-    do
-       samtools sort ./alignment_output/DRR0161${i}.sam -o ./sorted_bam/DRR0161${i}_sorted.bam
-    done
-    ```
+        
+        ```{php}
+        cd ~/RNASeq_lab_I/alignment_hisat2
+        mkdir sorted_bam
+        
+        for i in `seq 25 40`
+        do
+           samtools sort ./alignment_output/DRR0161${i}.sam -o ./sorted_bam/DRR0161${i}_sorted.bam
+        done
+        ```
     
 ### RapMap: *align reads to the transcriptome instead of the genome* 
 
@@ -227,12 +227,12 @@ rmdir ~/RNASeq_lab_I/0_raw_data/0_raw_reads/      ## remove the empty directory 
     * __RapMap__ does not generate sorted bam file automatically. We will need to use __samtools__ to convert the sam files to sorted bam fles.
     
     
-    ```{php}
-    cd ~/RNASeq_lab_I/alignment_rapmap
-    mkdir sorted_bam
-    
-    for i in `seq 25 40`
-    do
-       samtools sort ./alignment_output/DRR0161${i}.sam -o ./sorted_bam/DRR0161${i}_sorted.bam
-    done
-    ```
+        ```{php}
+        cd ~/RNASeq_lab_I/alignment_rapmap
+        mkdir sorted_bam
+        
+        for i in `seq 25 40`
+        do
+           samtools sort ./alignment_output/DRR0161${i}.sam -o ./sorted_bam/DRR0161${i}_sorted.bam
+        done
+        ```
