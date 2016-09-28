@@ -74,7 +74,7 @@ tar -xvzf rnaseq_labs_data.tar.gz
 
 ### STAR
 
-1. Index reference genome
+1. __Index reference genome__
 
     ```{php}
     cd ~/RNASeq_lab_I
@@ -102,7 +102,22 @@ tar -xvzf rnaseq_labs_data.tar.gz
         * Read 2: `head -2 ../0_raw_data/DRR016140_2.1percent.fastq | awk "{print length}" | tail -2`
     
 
-2. Align the reads
+2. __Align the reads__
+
+    * We have 16 pairs of reads file. We can use a for loop to get the job done, instead of running the command 16 times.
+    
+    ```{php}
+    cd ~/RNASeq_lab_I/alignment_STAR ## make sure you are in the right directory
+    
+    for i in `seq 25 40`
+    do
+         star --genomeDir ./genomeDir       \
+              --readFilesIn ../0_raw_data/DRR0161${i}_1.1percent.fastq ../0_raw_data/DRR0161${i}_2.1percent.fastq      \
+              --outFileNamePrefix ./aligned_output/DRR0161${i}_  \
+              --outSAMtype BAM SortedByCoordinate     \
+              --runThreadN 4
+    done
+    ```
 
 ### HISAT2
 
