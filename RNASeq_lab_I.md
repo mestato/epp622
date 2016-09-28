@@ -76,18 +76,31 @@ tar -xvzf rnaseq_labs_data.tar.gz
 
 1. Index reference genome
 
-```{php}
-cd ~/RNASeq_lab_I
-make alignment_STAR && cd alignment_STAR
-mkdir genomeDir
-
-star --runMode genomeGenerate     \
-    --genomeDir ./genomeDir       \
-    --genomeFastaFiles ../0_raw_data/Arabidopsis_thaliana.TAIR10.28.dna.genome.fa  \
-    --runThreadN 4      \
-    --sjdbGTFfile ../0_raw_data/Arabidopsis_thaliana.TAIR10.28.gtf   \
-    --sjdbOverhang 101
-```
+    ```{php}
+    cd ~/RNASeq_lab_I
+    make alignment_STAR && cd alignment_STAR
+    mkdir genomeDir
+    
+    star --runMode genomeGenerate     \
+        --genomeDir ./genomeDir       \
+        --genomeFastaFiles ../0_raw_data/Arabidopsis_thaliana.TAIR10.28.dna.genome.fa  \
+        --runThreadN 4      \
+        --sjdbGTFfile ../0_raw_data/Arabidopsis_thaliana.TAIR10.28.gtf   \
+        --sjdbOverhang 101
+    ```
+    
+    * `runMode genomeGenerate`: run genome indices generation job, default is to run alignment.
+    * `--genomeDir`: specify the directory for storing genome indices
+    * `--genomeFastaFiles`: one or more FASTA files with genome reference sequences
+    * `--runThreadN`: the number of threads to use.
+    * `sjdbGTFfile`: The annotation file that STAR uses to build splice junctions database
+    * `sjdbOverhang`: specifies the length of genomic sequence around the annotated junction. Usually it is set to __*Readlength - 1*__.
+    
+    + Command line to get the read length
+        
+        * Read 1: `head -2 ../0_raw_data/DRR016140_1.1percent.fastq | awk "{print length}" | tail -2`
+        * Read 2: `head -2 ../0_raw_data/DRR016140_2.1percent.fastq | awk "{print length}" | tail -2`
+    
 
 2. Align the reads
 
