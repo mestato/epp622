@@ -226,6 +226,7 @@ rmdir ~/RNASeq_lab_I/0_raw_data/0_raw_reads/      ## remove the empty directory 
 
     * __RapMap__ does not generate sorted bam file automatically. We will need to use __samtools__ to convert the sam files to sorted bam fles.
     
+    
     ```{php}
     cd ~/RNASeq_lab_I/alignment_rapmap
     mkdir sorted_bam
@@ -234,3 +235,4 @@ rmdir ~/RNASeq_lab_I/0_raw_data/0_raw_reads/      ## remove the empty directory 
     do
        samtools sort ./alignment_output/DRR0161${i}.sam -o ./sorted_bam/DRR0161${i}_sorted.bam
     done
+    ```
