@@ -157,7 +157,7 @@ rmdir ~/RNASeq_lab_I/0_raw_data/0_raw_reads/      ## remove the empty directory 
          hisat2 ./genomeDir/Athal_index      \
                 -1 ../0_raw_data/DRR0161${i}_1.1percent.fastq   \
                 -2 ../0_raw_data/DRR0161${i}_2.1percent.fastq   \
-                -S ./aligned_output/DRR0161${i}.sam             \
+                -S ./alignment_output/DRR0161${i}.sam             \
                 -p 4
     done
     ```
