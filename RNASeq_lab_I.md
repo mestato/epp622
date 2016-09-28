@@ -203,11 +203,14 @@ tar -xvzf rnaseq_labs_data.tar.gz
     cd ~/RNASeq_lab_I/alignment_rapmap
     mkdir alignment_output
     
-    rapmap quasimap \
-           -i ./transcriptomeDir
-           -1 ../0_raw_data/DRR0161${i}_1.1percent.fastq
-           -2 ../0_raw_data/DRR0161${i}_2.1percent.fastq
-           -o ./alignment_output/DRR0161${i}.sam
+    for i in `seq 25 40`
+    do
+        rapmap quasimap \
+               -i ./transcriptomeDir    \
+               -1 ../0_raw_data/DRR0161${i}_1.1percent.fastq    \
+               -2 ../0_raw_data/DRR0161${i}_2.1percent.fastq    \
+               -o ./alignment_output/DRR0161${i}.sam
+    done
     ```
     
     * `quansimap`: map reads using the suffix-array based method, should match the method you used for indexing.
