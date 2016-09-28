@@ -70,7 +70,7 @@ cp /data/home/mchen33/EPP622_2016_fall/rnaseq_labs_data.tar.gz
 tar -xvzf rnaseq_labs_data.tar.gz 
 ```
 
-## RNASeq alignment/mapping: STAR, HISAT2 and RapMap
+## RNASeq alignment/mapping: *STAR*, *HISAT2* and *RapMap*
 
 ### STAR
 
