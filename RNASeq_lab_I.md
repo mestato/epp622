@@ -130,10 +130,25 @@ tar -xvzf rnaseq_labs_data.tar.gz
 
 1. __Index reference genome__
 
+    ```{php}
+    cd ~/RNASeq_lab_I
+    mkdir alignment_hisat2 && cd alignment_hisat  ## create a directory for hisat2 alignment
+    mkdir genomeDir  ## again, we create a directory for the genome indices
+    
+    hisat2-build -p 4 \
+                 ../0_raw_data/Arabidopsis_thaliana.TAIR10.28.dna.genome.fa
+                 ./genomeDir/Athal_index
+    ```
+    
+    * `-p`: specifies the number of threads to use
+    * `../0_raw_data/Arabidopsis_thaliana.TAIR10.28.dna.genome.fa`: path to the reference genome
+    * `./genomeDir/Athal_index`: the base of indices files that will be generated.
+
 2. __Align the reads__
 
 ### RapMap 
 
 1. __Index reference genome__
+
 
 2. __Align the reads__
