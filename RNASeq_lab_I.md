@@ -251,3 +251,27 @@ do
    samtools flagstat ./sorted_bam/DRR0161${i}_sorted.bam > DRR0161${i}_flagstat.txt
 done
 ```
+
+### hisat2
+
+```{php}
+cd ~/RNASeq_lab_I/alignment_hisat2
+mkdir flagstat_output
+
+for i in `seq 25 40`
+do
+   samtools flagstat ./sorted_bam/DRR0161${i}_sorted.bam > DRR0161${i}_flagstat.txt
+done
+```
+
+### RapMap
+
+```{php}
+cd ~/RNASeq_lab_I/alignment_rapmap
+mkdir flagstat_output
+
+for i in `seq 25 40`
+do
+   samtools flagstat ./sorted_bam/DRR0161${i}_sorted.bam > DRR0161${i}_flagstat.txt
+done
+```
