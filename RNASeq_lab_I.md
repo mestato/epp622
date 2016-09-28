@@ -145,6 +145,20 @@ tar -xvzf rnaseq_labs_data.tar.gz
     * `./genomeDir/Athal_index`: the base of indices files that will be generated.
 
 2. __Align the reads__
+    
+    ```{php}
+    cd ~/RNASeq_lab_I/alignment_hisat2 ## go into the correct directory
+    mkdir alignment_output ## create a directory to store the alignment output files
+    
+    for i in `seq 25 40`
+    do
+         hisat2 ./genomeDir/Athal_index      \
+                -1 ../0_raw_data/DRR0161${i}_1.1percent.fastq   \
+                -2 ../0_raw_data/DRR0161${i}_2.1percent.fastq   \
+                -S ./aligned_output/DRR0161${i}.sam             \
+                -p 4
+    done
+    ```
 
 ### RapMap 
 
