@@ -80,7 +80,7 @@ rmdir ~/RNASeq_lab_I/0_raw_data/0_raw_reads/      ## remove the empty directory 
 
     ```{php}
     cd ~/RNASeq_lab_I
-    make alignment_STAR && cd alignment_STAR
+    mkdir alignment_STAR && cd alignment_STAR
     mkdir genomeDir
     
     star --runMode genomeGenerate     \
