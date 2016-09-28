@@ -180,9 +180,37 @@ tar -xvzf rnaseq_labs_data.tar.gz
     done
     ```
     
-### RapMap 
+### RapMap: *align reads to the transcriptome instead of the genome* 
 
 1. __Index reference genome__
-
+    
+    ```{php}
+    cd ~/RNASeq_lab_I
+    mkdir alignment_rapmap && cd alignment_rapmap
+    
+    rapmap quasiindex   \
+           -t ../0_raw_data/Arabidopsis_thaliana.TAIR10.28.cdna.all.fa \
+           -i ./transcriptomeDir
+    ```
+    
+    * `quasiindex`: builds a suffix array-based index
+    * `-t`: specifies the path to the reference transcriptome file
+    * `i`: specifies the location where the index should be written
 
 2. __Align the reads__
+    
+    ```{php}
+    cd ~/RNASeq_lab_I/alignment_rapmap
+    mkdir alignment_output
+    
+    rapmap quasimap \
+           -i ./transcriptomeDir
+           -1 ../0_raw_data/DRR0161${i}_1.1percent.fastq
+           -2 ../0_raw_data/DRR0161${i}_2.1percent.fastq
+           -o ./alignment_output/DRR0161${i}.sam
+    ```
+    
+    * `quansimap`: map reads using the suffix-array based method, should match the method you used for indexing.
+    * `-1`: specifies the first set of reads from a paired library.
+    * `-2`: specifies the second set of reads from a paired library.
+    * `-o`: path to the file where the output should be written.
