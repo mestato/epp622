@@ -134,7 +134,7 @@ rmdir ~/RNASeq_lab_I/0_raw_data/0_raw_reads/      ## remove the empty directory 
 
     ```{php}
     cd ~/RNASeq_lab_I
-    mkdir alignment_hisat2 && cd alignment_hisat  ## create a directory for hisat2 alignment
+    mkdir alignment_hisat2 && cd alignment_hisat2  ## create a directory for hisat2 alignment
     mkdir genomeDir  ## again, we create a directory for the genome indices
     
     hisat2-build -p 4 \
