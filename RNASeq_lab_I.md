@@ -64,11 +64,11 @@ gunzip *gz ## uncompress all .gz files in your current directory
 
 ### Raw reads ([Experimental info](https://github.com/mestato/epp622/blob/master/RNA_labs_data/experimental_info.csv))
 
-```{php}
+```{python}
 cd ~/RNASeq_lab_I/0_raw_data
 cp /data/home/mchen33/EPP622_2016_fall/rnaseq_labs_data.tar.gz ./
 tar -xvzf rnaseq_labs_data.tar.gz 
-mv 0_raw_reads/* .      ## move the reads files to '~/RNASeq_lab_I/0_raw_data/0_raw_data'
+mv 0_raw_reads/* ./      ## move the reads files to '~/RNASeq_lab_I/0_raw_data/0_raw_data'
 rmdir 0_raw_reads/      ## remove the empty directory '~/RNASeq_lab_I/0_raw_data/0_raw_data
 ```
 
