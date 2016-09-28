@@ -236,3 +236,6 @@ rmdir ~/RNASeq_lab_I/0_raw_data/0_raw_reads/      ## remove the empty directory 
            samtools sort ./alignment_output/DRR0161${i}.sam -o ./sorted_bam/DRR0161${i}_sorted.bam
         done
         ```
+
+
+## BAM files comparisons using `samtools flagstat` tool
