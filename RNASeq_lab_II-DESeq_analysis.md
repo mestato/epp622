@@ -4,7 +4,7 @@
 
 ```{php}
 
-for sorted_bam in $(find . -name *.bam | grep $1)
+for sorted_bam in $(find ~/RNASeq_lab_I -name *.bam | grep $1)
 do
     htseq-count -f bam \
                 -t gene \
