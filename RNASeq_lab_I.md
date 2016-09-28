@@ -239,3 +239,15 @@ rmdir ~/RNASeq_lab_I/0_raw_data/0_raw_reads/      ## remove the empty directory 
 
 
 ## BAM files comparisons using `samtools flagstat` tool
+
+### STAR
+
+```{php}
+cd ~/RNASeq_lab_I/alignment_STAR
+mkdir flagstat_output
+
+for i in `seq 25 40`
+do
+   samtools flagstat ./sorted_bam/DRR0161${i}_sorted.bam > DRR0161${i}_flagstat.txt
+done
+```
