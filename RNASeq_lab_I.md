@@ -159,6 +159,12 @@ tar -xvzf rnaseq_labs_data.tar.gz
                 -p 4
     done
     ```
+    
+    * `./genomeDir/Athal_index`: path to the directory of genome indices
+    * `-1`: specifies the first paired reads file
+    * `-2`: specifies the second paired reads file
+    * `-S`: output to a SAM file. Default is stdout.
+    * `-p`: the number of threads to use.
 
 ### RapMap 
 
