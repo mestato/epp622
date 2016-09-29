@@ -5,6 +5,15 @@
 Run command `cd ~/RNASeq_lab_I` and then create a script file named __`count_reads.sh`__. Put the following content into __`count_reads.sh`__. 
 
 ```{php}
+#!/bin/bash
+
+## USAGE
+## ./count_reads.sh hisat
+## ./count_reads.sh STAR
+## ./count_reads.sh rapmap
+
+cd ~/RNASeq_lab_I
+mkdir counts_$1 && cd counts_$1
 for sorted_bam_path in $(find ~/RNASeq_lab_I -name *.bam | grep $1)
 do
     counts_file=~/RNASeq_lab_I/counts_$1/$(echo $sorted_bam_path | grep -o "DRR0161[0-9]*")_$1_ct
@@ -23,7 +32,7 @@ do
 done
 ```
 
-* Why do we need this command line: `grep -v '^__'`
+* Why do we need this command line: `grep -v '^__'`?
 ```
 ...
 ...
