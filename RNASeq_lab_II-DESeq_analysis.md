@@ -15,10 +15,29 @@ do
                 -s no \
                 -i gene_id  \
                 $sorted_bam_path \
-                /data/home/mchen33/RNASeq_lab_I/0_raw_data/Arabidopsis_thaliana.TAIR10.28.gtf > $counts_file
+                /data/home/mchen33/RNASeq_lab_I/0_raw_data/Arabidopsis_thaliana.TAIR10.28.gtf \
+                | \
+                grep -v '^__' > $counts_file
     echo "The count data has been written into: $counts_file"
     echo "==================================================="
 done
+```
+
+* Why do we need this command line: __`grep -v '^__'`__
+```
+...
+...
+...
+ATMG01370	0
+ATMG01380	0
+ATMG01390	272
+ATMG01400	0
+ATMG01410	0
+__no_feature	8798
+__ambiguous	4637
+__too_low_aQual	1423
+__not_aligned	2794
+__alignment_not_unique	52464
 ```
 
 Change the file mode to make it an executable.
