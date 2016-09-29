@@ -2,7 +2,7 @@
 
 ### Write a script to automatically extract counts from all sorted bam files
 
-run command `cd ~/RNASeq_lab_I` and then create a script file named `count_reads.sh`. Put the following content into `count_reads.sh`. 
+run command `cd ~/RNASeq_lab_I` and then create a script file named __`count_reads.sh`__. Put the following content into __`count_reads.sh`__. 
 
 ```{php}
 for sorted_bam_path in $(find ~/RNASeq_lab_I -name *.bam | grep $1)
@@ -19,6 +19,12 @@ do
     echo "The count data has been written into: $counts_file"
     echo "==================================================="
 done
+```
+
+Change the file mode to make it an executable.
+
+```{php}
+chmod u+x count_reads.sh 
 ```
 
 ### Count reads from STAR alignment
