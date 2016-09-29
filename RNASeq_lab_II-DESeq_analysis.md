@@ -23,7 +23,7 @@ do
 done
 ```
 
-* Why do we need this command line: __`grep -v '\^__'`__
+* Why do we need this command line: __`grep -v '^\_\_'`__
 ```
 ...
 ...
