@@ -8,7 +8,7 @@ cd ~/RNASeq_lab_I
 mkdir counts_$1 && cd counts_$1
 for sorted_bam_path in $(find ~/RNASeq_lab_I -name *.bam | grep $1)
 do
-    counts_file=$(grep -o DRR0161[0-9]* $sorted_bam_path)_$1
+    counts_file=$(echo $sorted_bam_path | grep -o DRR0161[0-9]*)_$1
     htseq-count -f bam \
                 -t gene \
                 -s no \
