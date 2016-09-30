@@ -103,3 +103,11 @@ dim(dds)  ## before filtering
 dds = dds[rowSums(counts(dds))>1, ]
 dim(dds)
 ```
+
+* Differential expression analysis
+        + `log2 fold change (MAP): factor2 saline vs ABA` means that the estimates are log2(treated/untreated)
+```{R}
+dds = DESeq(dds)
+res = results(dds)
+res
+```
