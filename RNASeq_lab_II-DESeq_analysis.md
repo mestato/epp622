@@ -60,3 +60,11 @@ chmod u+x count_reads.sh
 ### Count reads from hisat2 alignment
 
 ### Count reads from RapMap alignment
+
+
+## Count matrix
+
+```{php}
+echo gene_ID $(ls | sort) > count_data.txt
+paste $(ls | sort) | awk '{for(i=3;i<=NF;i+=2) $i=""} {print}' >> count_data.txt
+```
