@@ -111,3 +111,121 @@ dds = DESeq(dds)
 res = results(dds)
 res
 ```
+
+
+```{R}
+function (object, test = c("Wald", "LRT"), fitType = c("parametric", 
+    "local", "mean"), betaPrior, full = design(object), reduced, 
+    quiet = FALSE, minReplicatesForReplace = 7, modelMatrixType, 
+    parallel = FALSE, BPPARAM = bpparam()) 
+{
+    stopifnot(is(object, "DESeqDataSet"))
+    test <- match.arg(test, choices = c("Wald", "LRT"))
+    fitType <- match.arg(fitType, choices = c("parametric", "local", 
+        "mean"))
+    stopifnot(is.logical(quiet))
+    stopifnot(is.numeric(minReplicatesForReplace))
+    stopifnot(is.logical(parallel))
+    modelAsFormula <- !is.matrix(full)
+    if (missing(betaPrior)) {
+        betaPrior <- if (modelAsFormula) {
+            termsOrder <- attr(terms.formula(design(object)), 
+                "order")
+            interactionPresent <- any(termsOrder > 1)
+            (test == "Wald") & !interactionPresent
+        }
+        else {
+            FALSE
+        }
+    }
+    else {
+        stopifnot(is.logical(betaPrior))
+    }
+    object <- sanitizeRowRanges(object)
+    if (test == "LRT") {
+        if (missing(reduced)) {
+            stop("likelihood ratio test requires a 'reduced' design, see ?DESeq")
+        }
+        if (!missing(modelMatrixType) && modelMatrixType == "expanded") {
+            stop("test='LRT' only implemented for standard model matrices")
+        }
+        if (is.matrix(full) | is.matrix(reduced)) {
+            if (!(is.matrix(full) & is.matrix(reduced))) {
+                stop("if one of 'full' and 'reduced' is a matrix, the other must be also a matrix")
+            }
+        }
+        if (modelAsFormula) {
+            checkLRT(full, reduced)
+        }
+        else {
+            if (ncol(full) <= ncol(reduced)) {
+                stop("the number of columns of 'full' should be more than the number of columns of 'reduced'")
+            }
+        }
+    }
+    if (test == "Wald" & !missing(reduced)) {
+        stop("'reduced' ignored when test='Wald'")
+    }
+    if (modelAsFormula) {
+        designAndArgChecker(object, betaPrior)
+        if (full != design(object)) {
+            stop("'full' specified as formula should equal design(object)")
+        }
+        modelMatrix <- NULL
+    }
+    else {
+        if (betaPrior == TRUE) {
+            stop("betaPrior=TRUE is not supported for user-provided model matrices")
+        }
+        modelMatrix <- full
+    }
+    attr(object, "betaPrior") <- betaPrior
+    stopifnot(length(parallel) == 1 & is.logical(parallel))
+    if (!is.null(sizeFactors(object)) || !is.null(normalizationFactors(object))) {
+        if (!quiet) {
+            if (!is.null(normalizationFactors(object))) {
+                message("using pre-existing normalization factors")
+            }
+            else {
+                message("using pre-existing size factors")
+            }
+        }
+    }
+    else {
+        if (!quiet) 
+            message("estimating size factors")
+        object <- estimateSizeFactors(object)
+    }
+    if (!parallel) {
+        if (!quiet) 
+            message("estimating dispersions")
+        object <- estimateDispersions(object, fitType = fitType, 
+            quiet = quiet, modelMatrix = modelMatrix)
+        if (!quiet) 
+            message("fitting model and testing")
+        if (test == "Wald") {
+            object <- nbinomWaldTest(object, betaPrior = betaPrior, 
+                quiet = quiet, modelMatrix = modelMatrix, modelMatrixType = modelMatrixType)
+        }
+        else if (test == "LRT") {
+            object <- nbinomLRT(object, full = full, reduced = reduced, 
+                betaPrior = betaPrior, quiet = quiet)
+        }
+    }
+    else if (parallel) {
+        object <- DESeqParallel(object, test = test, fitType = fitType, 
+            betaPrior = betaPrior, full = full, reduced = reduced, 
+            quiet = quiet, modelMatrix = modelMatrix, modelMatrixType = modelMatrixType, 
+            BPPARAM = BPPARAM)
+    }
+    sufficientReps <- any(nOrMoreInCell(attr(object, "modelMatrix"), 
+        minReplicatesForReplace))
+    if (sufficientReps) {
+        object <- refitWithoutOutliers(object, test = test, betaPrior = betaPrior, 
+            full = full, reduced = reduced, quiet = quiet, minReplicatesForReplace = minReplicatesForReplace, 
+            modelMatrix = modelMatrix, modelMatrixType = modelMatrixType)
+    }
+    object
+}
+<environment: namespace:DESeq2>
+```
