@@ -94,3 +94,12 @@ dds = DESeqDataSetFromMatrix(countData = countData,
                              design = ~ factor1 + factor2)
 dds
 ```
+
+
+* Pre-filtering: discard rows that have 0 for all treatments
+
+```{R}
+dim(dds)  ## before filtering
+dds = dds[rowSums(counts(dds))>1, ]
+dim(dds)
+```
