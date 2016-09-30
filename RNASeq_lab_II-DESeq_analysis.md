@@ -73,8 +73,18 @@ __Run the command line below if you are aligned to get count data from the hisat
 
 ## Count matrix
 
-[Example data](https://github.com/mestato/epp622/blob/master/RNA_labs_data/example_count_data_hisat2.csv)
+### Preprocess data with unix command lines
+[Example count data](https://github.com/mestato/epp622/blob/master/RNA_labs_data/example_count_data_hisat2.csv)
 ```{php}
 echo gene_ID $(ls DRR* | grep -o "DRR0161[0-9]*" | tr "\n" ' ') | tr -s [:blank:] ',' > count_data.csv
 paste $(ls DRR* | sort) | awk '{for(i=3;i<=NF;i+=2) $i=""}{print}' | tr -s [:blank:] ',' >> count_data.csv
+```
+
+[Experimental information](https://github.com/mestato/epp622/blob/master/RNA_labs_data/experimental_info.csv)
+
+### Load data into R
+
+```{R}
+countData = read.csv('count_data.csv', header = TRUE, row.names = 1)
+colData = read.csv("https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/experimental_info.csv", header = TRUE, row.names = 2)[, c("factor1", "factor2")]
 ```
