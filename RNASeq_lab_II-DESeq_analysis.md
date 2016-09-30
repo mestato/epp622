@@ -114,118 +114,138 @@ res
 
 
 ```{R}
-function (object, test = c("Wald", "LRT"), fitType = c("parametric", 
-    "local", "mean"), betaPrior, full = design(object), reduced, 
-    quiet = FALSE, minReplicatesForReplace = 7, modelMatrixType, 
-    parallel = FALSE, BPPARAM = bpparam()) 
+function (object, modelMatrix = NULL, modelFormula, alpha_hat, 
+    lambda, renameCols = TRUE, betaTol = 1e-08, maxit = 100, 
+    useOptim = TRUE, useQR = TRUE, forceOptim = FALSE, warnNonposVar = TRUE) 
 {
-    stopifnot(is(object, "DESeqDataSet"))
-    test <- match.arg(test, choices = c("Wald", "LRT"))
-    fitType <- match.arg(fitType, choices = c("parametric", "local", 
-        "mean"))
-    stopifnot(is.logical(quiet))
-    stopifnot(is.numeric(minReplicatesForReplace))
-    stopifnot(is.logical(parallel))
-    modelAsFormula <- !is.matrix(full)
-    if (missing(betaPrior)) {
-        betaPrior <- if (modelAsFormula) {
-            termsOrder <- attr(terms.formula(design(object)), 
-                "order")
-            interactionPresent <- any(termsOrder > 1)
-            (test == "Wald") & !interactionPresent
+    if (missing(modelFormula)) {
+        modelFormula <- design(object)
+    }
+    if (is.null(modelMatrix)) {
+        modelAsFormula <- TRUE
+        modelMatrix <- model.matrix(modelFormula, data = colData(object))
+    }
+    else {
+        modelAsFormula <- FALSE
+    }
+    stopifnot(all(colSums(abs(modelMatrix)) > 0))
+    modelMatrixNames <- colnames(modelMatrix)
+    modelMatrixNames[modelMatrixNames == "(Intercept)"] <- "Intercept"
+    modelMatrixNames <- make.names(modelMatrixNames)
+    if (renameCols) {
+        convertNames <- renameModelMatrixColumns(colData(object), 
+            modelFormula)
+        convertNames <- convertNames[convertNames$from %in% modelMatrixNames, 
+            , drop = FALSE]
+        modelMatrixNames[match(convertNames$from, modelMatrixNames)] <- convertNames$to
+    }
+    colnames(modelMatrix) <- modelMatrixNames
+    normalizationFactors <- if (!is.null(normalizationFactors(object))) {
+        normalizationFactors(object)
+    }
+    else {
+        matrix(rep(sizeFactors(object), each = nrow(object)), 
+            ncol = ncol(object))
+    }
+    if (missing(alpha_hat)) {
+        alpha_hat <- dispersions(object)
+    }
+    if (length(alpha_hat) != nrow(object)) {
+        stop("alpha_hat needs to be the same length as nrows(object)")
+    }
+    if (missing(lambda)) {
+        lambda <- rep(1e-06, ncol(modelMatrix))
+    }
+    justIntercept <- if (modelAsFormula) {
+        modelFormula == formula(~1)
+    }
+    else {
+        ncol(modelMatrix) == 1 & all(modelMatrix == 1)
+    }
+    if (justIntercept & all(lambda <= 1e-06)) {
+        alpha <- alpha_hat
+        betaConv <- rep(TRUE, nrow(object))
+        betaIter <- rep(1, nrow(object))
+        betaMatrix <- matrix(log2(mcols(object)$baseMean), ncol = 1)
+        mu <- normalizationFactors * as.numeric(2^betaMatrix)
+        logLike <- rowSums(dnbinom(counts(object), mu = mu, size = 1/alpha, 
+            log = TRUE))
+        deviance <- -2 * logLike
+        modelMatrix <- model.matrix(~1, colData(object))
+        colnames(modelMatrix) <- modelMatrixNames <- "Intercept"
+        w <- (mu^-1 + alpha)^-1
+        xtwx <- rowSums(w)
+        sigma <- xtwx^-1
+        betaSE <- matrix(log2(exp(1)) * sqrt(sigma), ncol = 1)
+        hat_diagonals <- w * xtwx^-1
+        res <- list(logLike = logLike, betaConv = betaConv, betaMatrix = betaMatrix, 
+            betaSE = betaSE, mu = mu, betaIter = betaIter, deviance = deviance, 
+            modelMatrix = modelMatrix, nterms = 1, hat_diagonals = hat_diagonals)
+        return(res)
+    }
+    qrx <- qr(modelMatrix)
+    if (qrx$rank == ncol(modelMatrix)) {
+        Q <- qr.Q(qrx)
+        R <- qr.R(qrx)
+        y <- t(log(counts(object, normalized = TRUE) + 0.1))
+        beta_mat <- t(solve(R, t(Q) %*% y))
+    }
+    else {
+        if ("Intercept" %in% modelMatrixNames) {
+            beta_mat <- matrix(0, ncol = ncol(modelMatrix), nrow = nrow(object))
+            logBaseMean <- log(rowMeans(counts(object, normalized = TRUE)))
+            beta_mat[, which(modelMatrixNames == "Intercept")] <- logBaseMean
         }
         else {
-            FALSE
+            beta_mat <- matrix(1, ncol = ncol(modelMatrix), nrow = nrow(object))
         }
+    }
+    lambdaLogScale <- lambda/log(2)^2
+    betaRes <- fitBetaWrapper(ySEXP = counts(object), xSEXP = modelMatrix, 
+        nfSEXP = normalizationFactors, alpha_hatSEXP = alpha_hat, 
+        beta_matSEXP = beta_mat, lambdaSEXP = lambdaLogScale, 
+        tolSEXP = betaTol, maxitSEXP = maxit, useQRSEXP = useQR)
+    mu <- normalizationFactors * t(exp(modelMatrix %*% t(betaRes$beta_mat)))
+    dispersionVector <- rep(dispersions(object), times = ncol(object))
+    logLike <- nbinomLogLike(counts(object), mu, dispersions(object))
+    rowStable <- apply(betaRes$beta_mat, 1, function(row) sum(is.na(row))) == 
+        0
+    rowVarPositive <- apply(betaRes$beta_var_mat, 1, function(row) sum(row <= 
+        0)) == 0
+    betaConv <- betaRes$iter < maxit
+    betaMatrix <- log2(exp(1)) * betaRes$beta_mat
+    colnames(betaMatrix) <- modelMatrixNames
+    colnames(modelMatrix) <- modelMatrixNames
+    betaSE <- log2(exp(1)) * sqrt(pmax(betaRes$beta_var_mat, 
+        0))
+    colnames(betaSE) <- paste0("SE_", modelMatrixNames)
+    rowsForOptim <- if (useOptim) {
+        which(!betaConv | !rowStable | !rowVarPositive)
     }
     else {
-        stopifnot(is.logical(betaPrior))
+        which(!rowStable | !rowVarPositive)
     }
-    object <- sanitizeRowRanges(object)
-    if (test == "LRT") {
-        if (missing(reduced)) {
-            stop("likelihood ratio test requires a 'reduced' design, see ?DESeq")
-        }
-        if (!missing(modelMatrixType) && modelMatrixType == "expanded") {
-            stop("test='LRT' only implemented for standard model matrices")
-        }
-        if (is.matrix(full) | is.matrix(reduced)) {
-            if (!(is.matrix(full) & is.matrix(reduced))) {
-                stop("if one of 'full' and 'reduced' is a matrix, the other must be also a matrix")
-            }
-        }
-        if (modelAsFormula) {
-            checkLRT(full, reduced)
-        }
-        else {
-            if (ncol(full) <= ncol(reduced)) {
-                stop("the number of columns of 'full' should be more than the number of columns of 'reduced'")
-            }
-        }
+    if (forceOptim) {
+        rowsForOptim <- seq_along(betaConv)
     }
-    if (test == "Wald" & !missing(reduced)) {
-        stop("'reduced' ignored when test='Wald'")
+    if (length(rowsForOptim) > 0) {
+        resOptim <- fitNbinomGLMsOptim(object, modelMatrix, lambda, 
+            rowsForOptim, rowStable, normalizationFactors, alpha_hat, 
+            betaMatrix, betaSE, betaConv, beta_mat, mu, logLike)
+        betaMatrix <- resOptim$betaMatrix
+        betaSE <- resOptim$betaSE
+        betaConv <- resOptim$betaConv
+        mu <- resOptim$mu
+        logLike <- resOptim$logLike
     }
-    if (modelAsFormula) {
-        designAndArgChecker(object, betaPrior)
-        if (full != design(object)) {
-            stop("'full' specified as formula should equal design(object)")
-        }
-        modelMatrix <- NULL
-    }
-    else {
-        if (betaPrior == TRUE) {
-            stop("betaPrior=TRUE is not supported for user-provided model matrices")
-        }
-        modelMatrix <- full
-    }
-    attr(object, "betaPrior") <- betaPrior
-    stopifnot(length(parallel) == 1 & is.logical(parallel))
-    if (!is.null(sizeFactors(object)) || !is.null(normalizationFactors(object))) {
-        if (!quiet) {
-            if (!is.null(normalizationFactors(object))) {
-                message("using pre-existing normalization factors")
-            }
-            else {
-                message("using pre-existing size factors")
-            }
-        }
-    }
-    else {
-        if (!quiet) 
-            message("estimating size factors")
-        object <- estimateSizeFactors(object)
-    }
-    if (!parallel) {
-        if (!quiet) 
-            message("estimating dispersions")
-        object <- estimateDispersions(object, fitType = fitType, 
-            quiet = quiet, modelMatrix = modelMatrix)
-        if (!quiet) 
-            message("fitting model and testing")
-        if (test == "Wald") {
-            object <- nbinomWaldTest(object, betaPrior = betaPrior, 
-                quiet = quiet, modelMatrix = modelMatrix, modelMatrixType = modelMatrixType)
-        }
-        else if (test == "LRT") {
-            object <- nbinomLRT(object, full = full, reduced = reduced, 
-                betaPrior = betaPrior, quiet = quiet)
-        }
-    }
-    else if (parallel) {
-        object <- DESeqParallel(object, test = test, fitType = fitType, 
-            betaPrior = betaPrior, full = full, reduced = reduced, 
-            quiet = quiet, modelMatrix = modelMatrix, modelMatrixType = modelMatrixType, 
-            BPPARAM = BPPARAM)
-    }
-    sufficientReps <- any(nOrMoreInCell(attr(object, "modelMatrix"), 
-        minReplicatesForReplace))
-    if (sufficientReps) {
-        object <- refitWithoutOutliers(object, test = test, betaPrior = betaPrior, 
-            full = full, reduced = reduced, quiet = quiet, minReplicatesForReplace = minReplicatesForReplace, 
-            modelMatrix = modelMatrix, modelMatrixType = modelMatrixType)
-    }
-    object
+    stopifnot(!any(is.na(betaSE)))
+    nNonposVar <- sum(rowSums(betaSE == 0) > 0)
+    if (warnNonposVar & nNonposVar > 0) 
+        warning(nNonposVar, "rows had non-positive estimates of variance for coefficients")
+    list(logLike = logLike, betaConv = betaConv, betaMatrix = betaMatrix, 
+        betaSE = betaSE, mu = mu, betaIter = betaRes$iter, deviance = betaRes$deviance, 
+        modelMatrix = modelMatrix, nterms = ncol(modelMatrix), 
+        hat_diagonals = betaRes$hat_diagonals)
 }
 <environment: namespace:DESeq2>
 ```
