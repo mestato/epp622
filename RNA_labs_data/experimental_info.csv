@@ -1,17 +1,17 @@
-experiment_accession_ID,run_accession_ID,treatments
-DRX014494,DRR016125,wildtype plants under mock conditions
-DRX014495,DRR016126,wildtype plants under ABA conditions
-DRX014496,DRR016127,wildtype plants under saline stress conditions
-DRX014497,DRR016128,wildtype plants under dehydration conditions
-DRX014498,DRR016129,ros1-3 plants under mock conditions
-DRX014499,DRR016130,ros1-3 plants under ABA conditions
-DRX014500,DRR016131,ros1-3 plants under saline stress conditions
-DRX014501,DRR016132,ros1-3 plants under dehydration conditions
-DRX014502,DRR016133,dml2;3 (dd) plants under mock conditions
-DRX014503,DRR016134,dml2;3 (dd) plants under ABA conditions
-DRX014504,DRR016135,dml2;3 (dd) plants under saline stress conditions
-DRX014505,DRR016136,dml2;3 (dd) plants under dehydration conditions
-DRX014506,DRR016137,ros1dml2;3 (rdd) plants under mock conditions
-DRX014507,DRR016138,ros1dml2;3 (rdd) plants under ABA conditions
-DRX014508,DRR016139,ros1dml2;3 (rdd) plants under saline stress conditions
-DRX014509,DRR016140,ros1dml2;3 (rdd) plants under dehydration conditions
+experiment_accession_ID,run_accession_ID,treatments,factor1,factor2
+DRX014494,DRR016125,wildtype plants under mock conditions,wildtype,mock
+DRX014495,DRR016126,wildtype plants under ABA conditions,wildtype,ABA
+DRX014496,DRR016127,wildtype plants under saline stress conditions,wildtype,saline
+DRX014497,DRR016128,wildtype plants under dehydration conditions,wildtype,dehydration
+DRX014498,DRR016129,ros1-3 plants under mock conditions,ros1-3,mock
+DRX014499,DRR016130,ros1-3 plants under ABA conditions,ros1-3,ABA
+DRX014500,DRR016131,ros1-3 plants under saline stress conditions,ros1-3,saline
+DRX014501,DRR016132,ros1-3 plants under dehydration conditions,ros1-3,dehydration
+DRX014502,DRR016133,dml2;3 (dd) plants under mock conditions,dml2-3,mock
+DRX014503,DRR016134,dml2;3 (dd) plants under ABA conditions,dml2-3,ABA
+DRX014504,DRR016135,dml2;3 (dd) plants under saline stress conditions,dml2-3,saline
+DRX014505,DRR016136,dml2;3 (dd) plants under dehydration conditions,dml2-3,dehydration
+DRX014506,DRR016137,ros1dml2;3 (rdd) plants under mock conditions,ros1dml2-3,mock
+DRX014507,DRR016138,ros1dml2;3 (rdd) plants under ABA conditions,ros1dml2-3,ABA
+DRX014508,DRR016139,ros1dml2;3 (rdd) plants under saline stress conditions,ros1dml2-3,saline
+DRX014509,DRR016140,ros1dml2;3 (rdd) plants under dehydration conditions,ros1dml2-3,dehydration
