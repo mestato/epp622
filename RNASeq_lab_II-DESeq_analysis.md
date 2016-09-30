@@ -57,13 +57,23 @@ chmod u+x count_reads.sh
 
 ### Count reads from STAR alignment
 
+__Run the command line below if you are aligned to get count data from the STAR mapping results.__
+
+```{php}
+./count_reads.sh STAR
+```
+
 ### Count reads from hisat2 alignment
 
-### Count reads from RapMap alignment
+__Run the command line below if you are aligned to get count data from the hisat mapping results.__
 
+```{php}
+./count_reads.sh hisat2
+```
 
 ## Count matrix
 
+[Example data](https://github.com/mestato/epp622/blob/master/RNA_labs_data/example_count_data_hisat2.csv)
 ```{php}
 echo gene_ID $(ls DRR* | grep -o "DRR0161[0-9]*" | tr "\n" ' ') | tr -s [:blank:] ',' > count_data.csv
 paste $(ls DRR* | sort) | awk '{for(i=3;i<=NF;i+=2) $i=""}{print}' | tr -s [:blank:] ',' >> count_data.csv
