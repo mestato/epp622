@@ -1,7 +1,7 @@
 #$ -N rapmap_sorted_bam
 #$ -q short*
 #$ -cwd
-#$ -pe threads 4
+#$ -pe threads 2
 #$ -S /bin/bash
 
 
