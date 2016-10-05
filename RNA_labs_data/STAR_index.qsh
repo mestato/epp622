@@ -1,7 +1,7 @@
 #$ -N STAR_index
 #$ -q short*
 #$ -cwd
-#$ -pe threads 4
+#$ -pe threads 2
 #$ -S /bin/bash
 
 cd ~/RNASeq_lab_I
