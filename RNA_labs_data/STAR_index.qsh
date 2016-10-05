@@ -1,0 +1,16 @@
+#$ -N STAR_index
+#$ -q short*
+#$ -cwd
+#$ -pe threads 4
+#$ -S /bin/bash
+
+cd ~/RNASeq_lab_I
+mkdir alignment_STAR && cd alignment_STAR
+mkdir genomeDir
+
+STAR --runMode genomeGenerate     \
+    --genomeDir ./genomeDir       \
+    --genomeFastaFiles ../0_raw_data/Arabidopsis_thaliana.TAIR10.28.dna.genome.fa  \
+    --runThreadN 4      \
+    --sjdbGTFfile ../0_raw_data/Arabidopsis_thaliana.TAIR10.28.gtf   \
+    --sjdbOverhang 101

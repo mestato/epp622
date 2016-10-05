@@ -1,0 +1,18 @@
+#$ -N STAR_alignment
+#$ -q short*
+#$ -cwd
+#$ -pe threads 4
+#$ -S /bin/bash
+
+
+cd ~/RNASeq_lab_I/alignment_STAR ## make sure you are in the right directory
+mkdir alignment_output  ## create a directory to store the alignment output files
+
+for i in `seq 25 40`
+do
+     STAR --genomeDir ./genomeDir       \
+          --readFilesIn ../0_raw_data/DRR0161${i}_1.1percent.fastq ../0_raw_data/DRR0161${i}_2.1percent.fastq      \
+          --outFileNamePrefix ./alignment_output/DRR0161${i}_  \
+          --outSAMtype BAM SortedByCoordinate     \
+          --runThreadN 4
+done
