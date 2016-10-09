@@ -10,11 +10,9 @@ Run command `cd ~/RNASeq_lab_I` and then create a script file named __`count_rea
 ## USAGE
 ## ./count_reads.sh hisat
 ## ./count_reads.sh STAR
-## ./count_reads.sh rapmap
 
-cd ~/RNASeq_lab_I
 mkdir counts_$1 && cd counts_$1
-for sorted_bam_path in $(find ~/RNASeq_lab_I -name *.bam | grep $1)
+for sorted_bam_path in $(find ./ -name *.bam | grep $1)
 do
     counts_file=~/RNASeq_lab_I/counts_$1/$(echo $sorted_bam_path | grep -o "DRR0161[0-9]*")_$1_ct
     echo "The target bam file is: "$sorted_bam_path
