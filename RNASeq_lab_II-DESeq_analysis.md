@@ -181,13 +181,13 @@ __Results explanation:__
               <numeric>      <numeric> <numeric> <numeric>    <numeric>    <numeric>
     ATMG01390  235.3293      0.8171322 0.2399232  3.405807 0.0006596878 0.0006596878
     ```
-
-    + __baseMean__: the average of normalized counts across all samples. This represents the intercept of your GLM.
-    + __log2Foldchange__: (stress saline vs ABA): log2(treated/untreated). Here it is log2(saline/ABA)
-    + __lfcSE__: standard error of the log2FoldChange estimate
-    + __stat__: statistic for the hypothesis test. 
-    + __pvalue__: the corresponding p-value from Wald test (or likelihood ratio test)
-    + __padj__: adjusted p value.
+    
+   + __baseMean__: the average of normalized counts across all samples. This represents the intercept of your GLM.
+   + __log2Foldchange__: (stress saline vs ABA): log2(treated/untreated). Here it is log2(saline/ABA)
+   + __lfcSE__: standard error of the log2FoldChange estimate
+   + __stat__: statistic for the hypothesis test. 
+   + __pvalue__: the corresponding p-value from Wald test (or likelihood ratio test)
+   + __padj__: adjusted p value.
     
 
 
