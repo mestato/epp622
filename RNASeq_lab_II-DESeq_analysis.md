@@ -98,7 +98,7 @@ paste $(ls DRR* | sort) | awk '{for(i=3;i<=NF;i+=2) $i=""}{print}' | tr -s [:bla
 
 ```{R}
 countData = read.csv('count_data.csv', header = TRUE, row.names = 1)
-colData = read.csv("https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/experimental_info.csv", header = TRUE, row.names = 2)[, c("factor1", "factor2")]
+colData = read.csv("https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/experimental_info.csv", header = TRUE, row.names = 2)[, c("phenotype", "stress")]
 
 ## construct the data that analyzing functions from DESeq2 can recognize.
 dds = DESeqDataSetFromMatrix(countData = countData,
