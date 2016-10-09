@@ -166,23 +166,7 @@ ATMG01390 235.3293034      0.8171322 0.2399232   3.4058071 0.0006596878 0.006175
 __Results explanation:__
 
 We choose gene ATMG01390 as an example
-    
-```{R}
-ATMG01390 = dds['ATMG01390', ]
-results(ATMG01390)
-```
 
-```{R}
-## output
-log2 fold change (MAP): stress saline vs ABA 
-Wald test p-value: stress saline vs ABA 
-DataFrame with 1 row and 6 columns
-           baseMean log2FoldChange     lfcSE      stat       pvalue         padj
-          <numeric>      <numeric> <numeric> <numeric>    <numeric>    <numeric>
-ATMG01390  235.3293      0.8171322 0.2399232  3.405807 0.0006596878 0.0006596878
-```
-    
- 
 + __baseMean__: the average of normalized counts across all samples. This represents the intercept of your GLM.
 + __log2Foldchange__: (stress saline vs ABA): log2(treated/untreated). Here it is log2(saline/ABA)
 + __lfcSE__: standard error of the log2FoldChange estimate
@@ -196,13 +180,19 @@ ATMG01390  235.3293      0.8171322 0.2399232  3.405807 0.0006596878 0.0006596878
     * Filtered by automatic independent filtering.
    
    
-   We can use the `mcols()` function to get information about which variables and tests were used.
-   
-   ```{R}
-   mcols(res)
-   ```
+By default, the `results()` function display comparison of the last level of the last variable over the first level of this variable. 
 
+We can extract results of comparisons between other levels:
 
+```{R}
+results(dds, contrast=c("stress", "mock", "saline"))
+```
+
+We can also extract results of comparisons from the *phenotype* factor
+
+```{R}
+results(dds, contrast=c("phenotype", "ros1-3", "wildtype"))
+```
 
 
 ### Likelihood Ratio Test (LRT) method
