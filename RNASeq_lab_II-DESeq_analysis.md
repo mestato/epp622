@@ -1,3 +1,6 @@
+## Get sorted bam files
+
+
 ## Count reads
 
 ### Write a script to automatically extract counts from all sorted bam files
@@ -55,7 +58,11 @@ chmod u+x count_reads.sh
 
 ### Count reads from STAR alignment
 
-__Run the command line below if you are aligned to get count data from the STAR mapping results.__
+* Change directory to where you have these two directory: `alignment_STAR` and `alignment_hisat2`
+        + If you use your own output, you should do `cd ~/RNASeq_lab_I`.
+        + If you copy the results from my directory, you should do `cd ~/alignment_outputs`.
+
+__Run the command line below if you want to get count data from the STAR mapping results.__
 
 ```{php}
 ./count_reads.sh STAR
@@ -63,7 +70,7 @@ __Run the command line below if you are aligned to get count data from the STAR 
 
 ### Count reads from hisat2 alignment
 
-__Run the command line below if you are aligned to get count data from the hisat mapping results.__
+__Run the command line below if you want to get count data from the hisat mapping results.__
 
 ```{php}
 ./count_reads.sh hisat2
