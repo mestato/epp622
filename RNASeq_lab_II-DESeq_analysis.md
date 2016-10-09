@@ -229,6 +229,8 @@ write.csv(as.data.frame(sigOrderedRes), "STRESS_saline_vs_ABA.csv")
 
 ### Likelihood Ratio Test (LRT) method
 
+The LRT method compares the full model with the reduced model to see if the *removed variable (factor)* has significant effect on the fitted model.
+
 ```{R}
 dds = DESeqDataSetFromMatrix(countData = countData,
                              colData = colData,
