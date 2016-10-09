@@ -58,7 +58,8 @@ chmod u+x count_reads.sh
 
 ### Count reads from STAR alignment
 
-* Change directory to where you have these two directory: `alignment_STAR` and `alignment_hisat2`
+* __Change directory to where you have these two directory: `alignment_STAR` and `alignment_hisat2`__
+
         + If you use your own output, you should do `cd ~/RNASeq_lab_I`.
         + If you copy the results from my directory, you should do `cd ~/alignment_outputs`.
 
