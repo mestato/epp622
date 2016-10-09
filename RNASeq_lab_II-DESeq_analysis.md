@@ -127,7 +127,41 @@ dds = dds[rowSums(counts(dds))>1, ]
 dim(dds)
 ```
 
-### Differential expression analysis: Main effect
+### Differential expression analysis
+
+```{R}
+dds = DESeqDataSetFromMatrix(countData = countData,
+                             colData = colData,
+                             design = ~ phenotype + stress)
+dds = DESeq(dds)
+res = results(dds)
+res
+```
+
+Results
+
+```{R}
+log2 fold change (MAP): stress saline vs ABA 
+Wald test p-value: stress saline vs ABA 
+DataFrame with 33602 rows and 6 columns
+             baseMean log2FoldChange     lfcSE        stat       pvalue        padj
+            <numeric>      <numeric> <numeric>   <numeric>    <numeric>   <numeric>
+AT1G01010   0.9246572     0.04092959 1.1660097  0.03510228    0.9719982          NA
+AT1G01020   0.7345512    -0.50205534 1.1991420 -0.41867879    0.6754509          NA
+AT1G01030   0.4918562     0.53379085 1.2153223  0.43921752    0.6605039          NA
+AT1G01040   4.1881473    -0.88285108 0.7685281 -1.14875571    0.2506567    0.495031
+AT1G01046   0.0000000             NA        NA          NA           NA          NA
+...               ...            ...       ...         ...          ...         ...
+ATMG01370   0.1996883     -0.4195522 1.0354777  -0.4051775 0.6853470644          NA
+ATMG01380   0.1976165      0.3778604 1.0240460   0.3689877 0.7121368957          NA
+ATMG01390 235.3293034      0.8171327 0.2399205   3.4058473 0.0006595905 0.005772221
+ATMG01400   0.0000000             NA        NA          NA           NA          NA
+ATMG01410   0.0000000             NA        NA          NA           NA          NA
+```
+
+Results explanation:
+
+
 
   + `log2 fold change (MAP): factor2 saline vs ABA` means that the estimates are log2(treated/untreated)
         
