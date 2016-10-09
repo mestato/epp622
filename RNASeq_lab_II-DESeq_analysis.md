@@ -102,7 +102,7 @@ paste $(ls DRR* | sort) | awk '{for(i=3;i<=NF;i+=2) $i=""}{print}' | tr -s [:bla
  
 ### Load data into R
 
-Open Rstudio and change working directory where you store the file __`count_data.csv`__.
+Open Rstudio and change working directory to where you store the file __`count_data.csv`__.
 
 ```{R}
 countData = read.csv('count_data.csv', header = TRUE, row.names = 1)
