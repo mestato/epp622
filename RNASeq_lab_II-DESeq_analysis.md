@@ -53,7 +53,7 @@ __alignment_not_unique	52464
 Change the file mode to make it an executable.
 
 ```{php}
-chmod u+x count_reads.sh 
+chmod u+x count_reads.sh
 ```
 
 ### Count reads from STAR alignment
@@ -67,6 +67,7 @@ __Run the command line below if you want to get count data from the STAR mapping
 
 ```{php}
 ./count_reads.sh STAR
+## needs 9m56.775s
 ```
 
 ### Count reads from hisat2 alignment
