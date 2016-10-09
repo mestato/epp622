@@ -128,7 +128,9 @@ dim(dds)
 ```
 
 ### Differential expression analysis: Main effect
-        + `log2 fold change (MAP): factor2 saline vs ABA` means that the estimates are log2(treated/untreated)
+
+  + `log2 fold change (MAP): factor2 saline vs ABA` means that the estimates are log2(treated/untreated)
+        
 ```{R}
 dds = DESeqDataSetFromMatrix(countData = countData,
                              colData = colData,
