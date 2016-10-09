@@ -189,11 +189,11 @@ __Results explanation:__
    + __stat__: statistic for the hypothesis test. 
    + __pvalue__: the corresponding p-value from Wald test (or likelihood ratio test)
    + __padj__: adjusted p value due to multiple comparisons.
-   + reasons for NA values:
+   + __reasons for NA values__:
    
-   * This gene has 0 count for all samples
-   * This row has an extreme count outlier
-   * Filtered by automatic independent filtering.
+    * This gene has 0 count for all samples
+    * This row has an extreme count outlier
+    * Filtered by automatic independent filtering.
    
    
    We can use the `mcols()` function to get information about which variables and tests were used.
