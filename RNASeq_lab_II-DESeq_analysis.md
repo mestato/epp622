@@ -127,12 +127,41 @@ dds = dds[rowSums(counts(dds))>1, ]
 dim(dds)
 ```
 
-* Differential expression analysis
+### Differential expression analysis: Main effect
         + `log2 fold change (MAP): factor2 saline vs ABA` means that the estimates are log2(treated/untreated)
 ```{R}
-dds = DESeq(dds)
+dds = DESeqDataSetFromMatrix(countData = countData,
+                             colData = colData,
+                             design = ~ phenotype + stress)
+dds = DESeq(dds, test="LRT", reduced = ~phenotype)
 res = results(dds)
 res
 ```
 
 
+
+
+
+## Interaction effect
+
+### Method 1: create a combined group
+
+```{R}
+dds$group <- factor(paste0(dds$phenotype, dds$stress))
+design(dds) <- ~ group
+dds <- DESeq(dds)
+resultsNames(dds)
+```
+
+### Method 2: likelihood ratio
+
+```{R}
+dds = DESeqDataSetFromMatrix(countData = countData,
+                             colData = colData,
+                             design = ~ phenotype + stress + phenotype:stress)
+dds = DESeq(dds)
+dds = DESeq(dds, test="LRT", reduced = ~phenotype+stress)
+resultsNames(dds)
+res = results(dds)
+res$padj[order(res$padj)]
+```
