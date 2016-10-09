@@ -111,6 +111,7 @@ library("DESeq2")
 countData = read.csv('count_data.csv', header = TRUE, row.names = 1)
 colData = read.csv("https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/experimental_info.csv", header = TRUE, row.names = 2)[, c("phenotype", "stress")]
 colnames(countData) = paste0(colData$phenotype, '_', colData$stress)
+rownames(colData) = paste0(colData$phenotype, '_', colData$stress)
 
 ## construct the data that analyzing functions from DESeq2 can recognize.
 dds = DESeqDataSetFromMatrix(countData = countData,
