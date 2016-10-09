@@ -94,7 +94,11 @@ paste $(ls DRR* | sort) | awk '{for(i=3;i<=NF;i+=2) $i=""}{print}' | tr -s [:bla
 
 [Experimental information](https://github.com/mestato/epp622/blob/master/RNA_labs_data/experimental_info.csv)
 
+* __Transfer the file `count_data.csv` to your local computer.__
+
 ### Load data into R
+
+Open Rstudio and change working directory where you store the file __`count_data.csv`__.
 
 ```{R}
 countData = read.csv('count_data.csv', header = TRUE, row.names = 1)
