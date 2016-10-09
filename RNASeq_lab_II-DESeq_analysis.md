@@ -162,7 +162,7 @@ ATMG01390 235.3293034      0.8171322 0.2399232   3.4058071 0.0006596878 0.006175
 ```
 
 
-__ Results explanation:__
+__Results explanation:__
 
   * We choose gene ATMG01390 as an example
     
