@@ -181,6 +181,17 @@ __Results explanation:__
     ATMG01390  235.3293      0.8171322 0.2399232  3.405807 0.0006596878 0.0006596878
     ```
 
+    + baseMean: the average of normalized counts across all samples. This represents the intercept of your GLM.
+    
+    ```{R}
+    mean(counts(ATMG01390)/sizeFactors(ATMG01390))
+    ```
+    
+    + log2Foldchange (stress saline vs ABA): log2(treated/untreated)  
+    
+    ```{R}
+    
+    ```
 
 
 
