@@ -236,8 +236,8 @@ dds = DESeqDataSetFromMatrix(countData = countData,
                              colData = colData,
                              design = ~ phenotype + stress)
 dds = DESeq(dds, test="LRT", reduced = ~phenotype)
-res = results(dds)
-res
+resLRT = results(dds)
+resLRT
 ```
 
 
