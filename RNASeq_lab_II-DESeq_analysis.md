@@ -75,7 +75,10 @@ __Run the command line below if you want to get count data from the hisat mappin
 
 ```{php}
 ./count_reads.sh hisat2
+## needs 10m4.509s
 ```
+
+
 
 ## Count matrix
 
