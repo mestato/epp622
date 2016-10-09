@@ -219,6 +219,14 @@ plotCounts(dds, gene=mostSigGene, intgroup="phenotype")
 par(mfcol=c(1,1))
 ```
 
+### Exporting results into CSV files
+
+```{R}
+orderedRes = res[order(res$padj), ]
+sigOrderedRes = subset(orderedRes, padj < 0.05)
+write.csv(as.data.frame(sigOrderedRes), "STRESS_saline_vs_ABA.csv")
+```
+
 ### Likelihood Ratio Test (LRT) method
 
 ```{R}
@@ -231,21 +239,7 @@ res
 ```
 
 
-
-
-
-## Interaction effect
-
-### Method 1: create a combined group
-
-```{R}
-dds$group <- factor(paste0(dds$phenotype, dds$stress))
-design(dds) <- ~ group
-dds <- DESeq(dds)
-resultsNames(dds)
-```
-
-### Method 2: likelihood ratio
+### Interaction effect
 
 ```{R}
 dds = DESeqDataSetFromMatrix(countData = countData,
