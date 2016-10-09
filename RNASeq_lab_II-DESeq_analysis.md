@@ -177,9 +177,15 @@ We choose gene ATMG01390 as an example
    
     * This gene has 0 count for all samples
     * This row has an extreme count outlier
-    * Filtered by automatic independent filtering.
+    * Filtered by automatic independent filtering for having low mean count.
    
    
+Get a summary of the results:
+
+```{R}
+summary(res)
+```
+
 By default, the `results()` function display comparison of the last level of the last variable over the first level of this variable. 
 
 We can extract results of comparisons between other levels:
@@ -194,6 +200,24 @@ We can also extract results of comparisons from the *phenotype* factor
 results(dds, contrast=c("phenotype", "ros1-3", "wildtype"))
 ```
 
+__MA-plot of the results__
+
+```{R}
+plotMA(res)
+```
+
+__Plot counts__
+
+We select the gene which has the smallest padj value to plot its count at different levels
+
+```{R}
+mostSigGene = rownames(dds)[which.min(res$padj)]
+mostSigGene
+par(mfcol=c(1,2))
+plotCounts(dds, gene=mostSigGene, intgroup="stress")
+plotCounts(dds, gene=mostSigGene, intgroup="phenotype")
+par(mfcol=c(1,1))
+```
 
 ### Likelihood Ratio Test (LRT) method
 
