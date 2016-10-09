@@ -105,6 +105,9 @@ paste $(ls DRR* | sort) | awk '{for(i=3;i<=NF;i+=2) $i=""}{print}' | tr -s [:bla
 Open Rstudio and change working directory to where you store the file __`count_data.csv`__.
 
 ```{R}
+install.packages("DESeq2")
+library("DESeq2")
+
 countData = read.csv('count_data.csv', header = TRUE, row.names = 1)
 colData = read.csv("https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/experimental_info.csv", header = TRUE, row.names = 2)[, c("phenotype", "stress")]
 
