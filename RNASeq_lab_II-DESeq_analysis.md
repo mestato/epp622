@@ -189,12 +189,17 @@ __Results explanation:__
    + __pvalue__: the corresponding p-value from Wald test (or likelihood ratio test)
    + __padj__: adjusted p value.
     
+   We can use the `mcols()` function to get information about which variables and tests were used.
+   
+   ```{R}
+   mcols(res)
+   ```
 
 
 
 
-  + `log2 fold change (MAP): factor2 saline vs ABA` means that the estimates are log2(treated/untreated)
-        
+### Likelihood Ratio Test (LRT) method
+
 ```{R}
 dds = DESeqDataSetFromMatrix(countData = countData,
                              colData = colData,
