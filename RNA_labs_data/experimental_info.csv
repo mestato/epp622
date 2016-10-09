@@ -1,4 +1,4 @@
-experiment_accession_ID,run_accession_ID,treatments,factor1,factor2
+experiment_accession_ID,run_accession_ID,treatments,phenotype,stress
 DRX014494,DRR016125,wildtype plants under mock conditions,wildtype,mock
 DRX014495,DRR016126,wildtype plants under ABA conditions,wildtype,ABA
 DRX014496,DRR016127,wildtype plants under saline stress conditions,wildtype,saline
