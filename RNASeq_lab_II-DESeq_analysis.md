@@ -133,6 +133,7 @@ dim(dds)
 dds = DESeqDataSetFromMatrix(countData = countData,
                              colData = colData,
                              design = ~ phenotype + stress)
+dds = dds[rowSums(counts(dds))>1, ]                             
 dds = DESeq(dds)
 res = results(dds)
 res
