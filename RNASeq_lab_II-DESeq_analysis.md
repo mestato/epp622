@@ -161,9 +161,10 @@ ATMG01380   0.1976165      0.3782464 1.0249796   0.3690282 0.7121066974         
 ATMG01390 235.3293034      0.8171322 0.2399232   3.4058071 0.0006596878 0.00617547
 ```
 
+
 __ Results explanation:__
 
-    * We choose gene ATMG01390 as an example
+  * We choose gene ATMG01390 as an example
     
     ```{R}
     ATMG01390 = dds['ATMG01390', ]
