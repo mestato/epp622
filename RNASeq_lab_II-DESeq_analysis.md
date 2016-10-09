@@ -83,6 +83,8 @@ __Run the command line below if you want to get count data from the hisat mappin
 
 ## Count matrix
 
+* __Change directory to `counts_hisat2` OR `counts_STAR`__.
+
 ### Preprocess data with unix command lines
 [Example count data](https://github.com/mestato/epp622/blob/master/RNA_labs_data/example_count_data_hisat2.csv)
 ```{php}
