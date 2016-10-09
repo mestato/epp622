@@ -111,7 +111,7 @@ colData = read.csv("https://raw.githubusercontent.com/mestato/epp622/master/RNA_
 ## construct the data that analyzing functions from DESeq2 can recognize.
 dds = DESeqDataSetFromMatrix(countData = countData,
                              colData = colData,
-                             design = ~ factor1 + factor2)
+                             design = ~ phenotype + stress)
 dds
 ```
 
