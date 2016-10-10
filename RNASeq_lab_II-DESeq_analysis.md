@@ -45,7 +45,7 @@ do
                 -t gene \
                 -i gene_id  \
                 $sorted_bam_path \
-                ~/RNASeq_lab_2_DESeq/Arabidopsis_thaliana.TAIR10.28.gtf \   ## you may need to change this path if you use your own data.
+                ~/RNASeq_lab_2_DESeq/Arabidopsis_thaliana.TAIR10.28.gtf \
                 | \
                 grep -v '^__' > ./counts_$1/$counts_file
     echo "The count data has been written into: $counts_file"
