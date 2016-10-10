@@ -179,7 +179,7 @@ We choose gene ATMG01390 as an example
 + __baseMean__: the average of normalized counts across all samples. This represents the intercept of your GLM.
 + __log2Foldchange__: (stress saline vs ABA): log2(treated/untreated). Here it is log2(saline/ABA)
 + __lfcSE__: standard error of the log2FoldChange estimate
-+ __stat__: statistic for the hypothesis test. 
++ __stat__: statistic for the hypothesis test. For Wald test, it is log2FoldChange/lfcSE. 
 + __pvalue__: the corresponding p-value from Wald test (or likelihood ratio test)
 + __padj__: adjusted p value due to multiple comparisons.
 + __reasons for NA values__:
