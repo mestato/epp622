@@ -14,7 +14,7 @@ cp -r /data/home/mchen33/RNASeq_lab_2_DESeq ./
 
 ### Write a script to automatically extract counts from all sorted bam files
 
-Run command `cd ~/RNASeq_lab_I` and then create a script file named __`count_reads.sh`__. Put the following content into __`count_reads.sh`__. 
+Run command `cd ~/RNASeq_lab_2_DESeq` and then create a script file named __`count_reads.sh`__. Put the following content into __`count_reads.sh`__. 
 
 ```{php}
 #!/bin/bash
@@ -60,7 +60,7 @@ __not_aligned	2794
 __alignment_not_unique	52464
 ```
 
-Change the file mode to make it an executable.
+Change the file mode to make it executable.
 
 ```{php}
 chmod u+x count_reads.sh 
