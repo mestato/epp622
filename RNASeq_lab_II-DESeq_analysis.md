@@ -258,7 +258,7 @@ sigOrderedRes = subset(orderedRes, padj < 0.05)
 dim(sigOrderedRes)
 ```
 
-__Why the number from LRT is much larger than the number from Wald test?__
+__Why is the number from LRT much larger than the number from Wald test?__
 
 Let's a gene that are significant in LRT but not in Wald test.
 
