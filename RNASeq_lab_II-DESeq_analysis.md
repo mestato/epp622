@@ -240,16 +240,52 @@ resLRT = results(dds)
 resLRT
 ```
 
+### Wald test vs Likelihood Ratio test
 
-### Interaction effect
+How many genes are significant in LRT test?
 
 ```{R}
-dds = DESeqDataSetFromMatrix(countData = countData,
-                             colData = colData,
-                             design = ~ phenotype + stress + phenotype:stress)
-dds = DESeq(dds)
-dds = DESeq(dds, test="LRT", reduced = ~phenotype+stress)
-resultsNames(dds)
-res = results(dds)
-res$padj[order(res$padj)]
+orderedResLRT = resLRT[order(resLRT$padj), ]
+sigOrderedResLRT = subset(orderedResLRT, padj<0.05)
+dim(sigOrderedResLRT)
 ```
+
+How many genes are significant in Wald test?
+
+```{R}
+orderedRes = res[order(res$padj), ]
+sigOrderedRes = subset(orderedRes, padj < 0.05)
+dim(sigOrderedRes)
+```
+
+__Why the number from LRT is much larger than the number from Wald test?__
+
+Let's a gene that are significant in LRT but not in Wald test.
+
+```{R}
+LRTsigGenes = rownames(sigOrderedResLRT)
+Res_genesSigInLRT = res[LRTsigGenes, ]
+notSigWaldGene = rownames(Res_genesSigInLRT)[which.max(Res_genesSigInLRT$padj)]
+notSigWaldGene
+```
+
+padj comparison for the selected gene
+```{R}
+resLRT[notSigWaldGene, ]
+res[notSigWaldGene, ]
+```
+
+Let's plot the counts for this gene
+
+```{R}
+plotCounts(dds, gene=notSigWaldGene, intgroup="stress")
+```
+
+What do you see from the plot?
+
+```{R}
+res2 = results(res, contrast=c("stress", "dehydration", "ABA"))
+res[notSigWaldGene, ]
+```
+
+
