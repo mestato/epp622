@@ -292,7 +292,7 @@ plotCounts(dds, gene=notSigWaldGene, intgroup="stress")
 
 What do you see from the plot?
 
-Let extract the results of comparisons between __dehydration__ and "ABA".
+Let's extract the results of comparisons between __dehydration__ and "ABA".
 
 ```{R}
 res2 = results(res, contrast=c("stress", "dehydration", "ABA"))
