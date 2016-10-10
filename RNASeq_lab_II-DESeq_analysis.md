@@ -38,7 +38,6 @@ do
     echo "==================================================="
     htseq-count -f bam \
                 -t gene \
-                -s no \
                 -i gene_id  \
                 $sorted_bam_path \
                 ~/RNASeq_lab_2_DESeq/Arabidopsis_thaliana.TAIR10.28.gtf \   ## you may need to change this path if you use your own data.
