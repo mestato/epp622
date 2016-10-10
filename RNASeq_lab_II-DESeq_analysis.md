@@ -1,5 +1,14 @@
 ## Get sorted bam files
 
+Option 1: Use your own sorted bam file from last lab (either from hisat2 mapping or STAR mapping). 
+
+Option 2: Copy the sorted bam files from my directory
+
+```{php}
+cd ~
+cp -r /data/home/mchen33/RNASeq_lab_2_DESeq ./
+```
+
 
 ## Count reads
 
