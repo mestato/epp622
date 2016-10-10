@@ -105,7 +105,9 @@ paste $(ls DRR* | sort) | awk '{for(i=3;i<=NF;i+=2) $i=""}{print}' | tr -s [:bla
 
     + run the `scp command` on your local computer: 
     
-            = `scp newton_user@newton.login.utk.edu:/path/to/count_data.csv /path/to/directory/you/want/to/put/count_data.csv`
+    ```
+    scp newton_user@newton.login.utk.edu:/path/to/count_data.csv /path/to/directory/you/want/to/put/count_data.csv
+    ```
  
 ### Load data into R
 
