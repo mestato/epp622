@@ -9,6 +9,10 @@ cd ~
 cp -r /data/home/mchen33/RNASeq_lab_2_DESeq ./
 ```
 
+## Install htseq
+~~~
+conda install htseq -y
+~~~
 
 ## Count reads
 
