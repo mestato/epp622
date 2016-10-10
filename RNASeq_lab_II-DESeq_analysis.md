@@ -20,13 +20,14 @@ Run command `cd ~/RNASeq_lab_I` and then create a script file named __`count_rea
 #!/bin/bash
 
 ## USAGE
-## ./count_reads.sh hisat
-## ./count_reads.sh STAR
+## ./count_reads.sh hisat /path/to/the/sorted_bam_file_directory
+## ./count_reads.sh STAR /path/to/the/sorted_bam_file_directory
 
-mkdir counts_$1 && cd counts_$1
-for sorted_bam_path in $(find ./ -name *.bam)
+mkdir counts_$1
+
+for sorted_bam_path in $(find $2 -name *.bam)
 do
-    counts_file=~/RNASeq_lab_I/counts_$1/$(echo $sorted_bam_path | grep -o "DRR0161[0-9]*")_$1_ct
+    counts_file=$(echo $sorted_bam_path | grep -o "DRR0161[0-9]*")_$1_ct
     echo "The target bam file is: "$sorted_bam_path
     echo "==================================================="
     htseq-count -f bam \
@@ -34,9 +35,9 @@ do
                 -s no \
                 -i gene_id  \
                 $sorted_bam_path \
-                /data/home/mchen33/RNASeq_lab_I/0_raw_data/Arabidopsis_thaliana.TAIR10.28.gtf \
+                ~/RNASeq_lab_2_DESeq/Arabidopsis_thaliana.TAIR10.28.gtf \
                 | \
-                grep -v '^__' > $counts_file
+                grep -v '^__' > ./counts_$1/$counts_file
     echo "The count data has been written into: $counts_file"
     echo "==================================================="
 done
@@ -62,7 +63,7 @@ __alignment_not_unique	52464
 Change the file mode to make it an executable.
 
 ```{php}
-chmod u+x count_reads.sh
+chmod u+x count_reads.sh 
 ```
 
 ### Count reads from STAR alignment
@@ -72,7 +73,7 @@ chmod u+x count_reads.sh
 __Run the command line below if you want to get count data from the STAR mapping results.__
 
 ```{php}
-./count_reads.sh STAR
+./count_reads.sh STAR ~/RNASeq_lab_2_DESeq/STAR_alignment_output
 ## needs 9m56.775s
 ```
 
@@ -81,7 +82,7 @@ __Run the command line below if you want to get count data from the STAR mapping
 __Run the command line below if you want to get count data from the hisat mapping results.__
 
 ```{php}
-./count_reads.sh hisat2
+./count_reads.sh hisat2 ~/RNASeq_lab_2_DESeq/hisat2_sorted_bam
 ## needs 10m4.509s
 ```
 
