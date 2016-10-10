@@ -111,7 +111,7 @@ paste $(ls DRR* | sort) | awk '{for(i=3;i<=NF;i+=2) $i=""}{print}' | tr -s [:bla
 
 [Experimental information](https://github.com/mestato/epp622/blob/master/RNA_labs_data/experimental_info.csv)
 
-* __Transfer the file `count_data.csv` to your local computer with firezilla or the `scp` command.__
+* __Transfer the file `count_data.csv` to your local computer with filezilla or the `scp` command.__
 
     + run the `scp command` on your local computer: 
     
