@@ -305,7 +305,7 @@ What do you see from the plot?
 Let's extract the results of comparisons between __dehydration__ and "ABA".
 
 ```{R}
-res2 = results(res, contrast=c("stress", "dehydration", "ABA"))
+res2 = results(dds, contrast=c("stress", "dehydration", "ABA"))
 res2[notSigWaldGene, ]
 ```
 
