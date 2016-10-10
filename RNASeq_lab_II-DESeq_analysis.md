@@ -10,6 +10,7 @@ cp -r /data/home/mchen33/RNASeq_lab_2_DESeq ./
 ```
 
 ## Install htseq
+This requires internet access, so do this from the head node.
 ~~~
 conda install htseq -y
 ~~~
