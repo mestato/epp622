@@ -1,6 +1,6 @@
 ## Get sorted bam files
 
-Option 1: Use your own sorted bam file from last lab (either from hisat2 mapping or STAR mapping). 
+Option 1: Use your own sorted bam files from last lab (either from hisat2 mapping or STAR mapping). 
 
 Option 2: Copy the sorted bam files from my directory to your home directory.
 
