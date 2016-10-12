@@ -1,3 +1,10 @@
+
+### Count Data
+
+```{php}
+wget https://github.com/mestato/epp622/blob/master/RNA_labs_data/count_data.csv?raw=true
+```
+
 ### Install DESeq2
 
 ```{R}
