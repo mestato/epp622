@@ -1,12 +1,13 @@
 ### Install DESeq2
 
+```{R}
 ## try http:// if https:// URLs are not supported
 source("https://bioconductor.org/biocLite.R")
 biocLite("DESeq2")
 
 install.packages("colorspace")
 require("DESeq2")
-
+```
 
 ## Get sorted bam files
 
