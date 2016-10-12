@@ -84,7 +84,7 @@ chmod u+x count_reads.sh
 __Run the command line below if you want to get count data from the STAR mapping results.__
 
 ```{php}
-./count_reads.sh STAR ~/RNASeq_lab_2_DESeq/STAR_alignment_output
+./count_reads.sh STAR ~/RNASeq_lab_2_DESeq/STAR_alignment_output pos
 ## needs 9m56.775s
 ```
 
@@ -93,7 +93,7 @@ __Run the command line below if you want to get count data from the STAR mapping
 __Run the command line below if you want to get count data from the hisat mapping results.__
 
 ```{php}
-./count_reads.sh hisat2 ~/RNASeq_lab_2_DESeq/hisat2_sorted_bam
+./count_reads.sh hisat2 ~/RNASeq_lab_2_DESeq/hisat2_sorted_bam name
 ## needs 10m4.509s
 ```
 
