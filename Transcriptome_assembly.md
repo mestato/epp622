@@ -23,7 +23,8 @@ cp -r /data/home/mchen33/EPP622_2016_fall/0_raw_reads .
 
 We will be using the assembler Trinity.
 
-Run
+
+### Run
 Lets find out more information about the software and its parameters
 
 ```{php}
