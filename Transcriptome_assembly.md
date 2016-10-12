@@ -25,31 +25,32 @@ We will be using the assembler Trinity.
 
 
 ### Run
-Lets find out more information about the software and its parameters
+
+Install __*trinity*__
 
 ```{php}
- ls /lustre/projects/rnaseq_ws/apps/trinityrnaseq_r20131110/
- /lustre/projects/rnaseq_ws/apps/trinityrnaseq_r20131110/Trinity.pl --help
+conda install trinity -y
+Trinity --help
 ```
 
 There are a number of required parameters
 
 ```{php}
 --seqType <string>  :type of reads: ( fa, or fq )
---JM <string>  :(Jellyfish Memory) number of GB of system memory to use for
+--max_memory <string>  :suggested max memory to use by Trinity where limiting can be enabled.
 ```
 
 If paired reads:
 
 ```{php}
---left <string>  :left reads, one or more (separated by space)
---right <string>  :right reads, one or more (separated by space)
+--left  <string>    :left reads, one or more file names (separated by commas, no spaces)
+--right <string>    :right reads, one or more file names (separated by commas, no spaces)
 ```
 
 Or, if unpaired reads:
 
 ```{php}
---single <string>  :single reads, one or more (note, if single file contains pairs, can use flag: --run_as_paired )
+--single <string>   :single reads, one or more file names, comma-delimited (note, if single file contains pairs, can use flag: --run_as_paired )
 ```
 
 So we will need to get all the forward reads in one file, and all the reverse reads in another. So lets concatenate the raw reads files
@@ -85,9 +86,9 @@ java -version ## check java version
 Now we have figured out all our parameters, so lets run the assembly software. We will give it 6Gb of RAM instead of 7Gb so that it does not use too much and kill the interactive session.
 
 ```{php}
- /lustre/projects/rnaseq_ws/apps/trinityrnaseq_r20131110/Trinity.pl \
+Trinity \
  --seqType fq \
- --JM 6G \
+ --max_memory 6G \
  --left allR1.fastq \
  --right allR2.fastq \
  --SS_lib_type FR \
