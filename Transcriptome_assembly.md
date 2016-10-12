@@ -119,3 +119,13 @@ Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg
 ```{php}
  /lustre/projects/rnaseq_ws/apps/fasta_file_stats.pl Trinity.fasta
 ```
+
+### Assessing quality of assembly with Transrate
+
+```{php}
+conda install transrate -y
+```
+
+```{php}
+transrate --assembly trinity_out_dir/Trinity.fasta --left allR1.fastq --right allR2.fastq > transrate_output
+```
