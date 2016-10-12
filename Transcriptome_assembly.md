@@ -92,7 +92,12 @@ Now we have figured out all our parameters, so lets run the assembly software. W
 #$ -l mem=7G
 #$ -q medium*
 
-Trinity \
+ PATH=$PATH:/lustre/projects/rnaseq_ws/apps/bowtie-1.1.1
+ PATH=$PATH:/lustre/projects/rnaseq_ws/apps/samtools-1.1/
+
+ module load java/jre7u60 
+ 
+~/anaconda2/bin/Trinity \
  --seqType fq \
  --max_memory 6G \
  --left allR1.fastq \
