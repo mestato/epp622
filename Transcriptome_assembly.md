@@ -55,7 +55,7 @@ Or, if unpaired reads:
 
 So we will need to get all the forward reads in one file, and all the reverse reads in another. So lets concatenate the raw reads files
 
-```{R}
+```
  cat 0_raw_reads/*1.1percent.fastq > allR1.fastq
  cat 0_raw_reads/*2.1percent.fastq> allR2.fastq
 ```
