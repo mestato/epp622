@@ -1,3 +1,13 @@
+### Install DESeq2
+
+## try http:// if https:// URLs are not supported
+source("https://bioconductor.org/biocLite.R")
+biocLite("DESeq2")
+
+install.packages("colorspace")
+require("DESeq2")
+
+
 ## Get sorted bam files
 
 Option 1: Use your own sorted bam files from last lab (either from hisat2 mapping or STAR mapping). 
