@@ -83,9 +83,15 @@ module load java/jre7u60
 java -version ## check java version
 ```
 
-Now we have figured out all our parameters, so lets run the assembly software. We will give it 6Gb of RAM instead of 7Gb so that it does not use too much and kill the interactive session.
+Now we have figured out all our parameters, so lets run the assembly software. We will give it 6Gb of RAM instead of 7Gb so that it does not use too much and kill the interactive session. Create a script file named `trinity_assembly.qsh` which has the following code in it.
 
 ```{php}
+#$ -N trinity_assembly
+#$ -cwd
+#$ -S /bin/bash
+#$ -l mem=7G
+#$ -q medium*
+
 Trinity \
  --seqType fq \
  --max_memory 6G \
@@ -97,6 +103,11 @@ Trinity \
  --jaccard_clip
 ```
 
+Submit the job:
+
+```{php}
+qsub trinity_assembly.qsh
+```
 
 ### Results
 
