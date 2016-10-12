@@ -31,8 +31,8 @@ Run command `cd ~/RNASeq_lab_2_DESeq` and then create a script file named __`cou
 #!/bin/bash
 
 ## USAGE
-## ./count_reads.sh hisat /path/to/the/sorted_bam_file_directory
-## ./count_reads.sh STAR /path/to/the/sorted_bam_file_directory
+## ./count_reads.sh hisat /path/to/the/sorted_bam_file_directory bam_file_ORDER_TYPE
+## ./count_reads.sh STAR /path/to/the/sorted_bam_file_directory bam_file_ORDER_TYPE
 
 mkdir counts_$1
 
@@ -44,6 +44,7 @@ do
     htseq-count -f bam \
                 -t gene \
                 -i gene_id  \
+                -r $3 \
                 $sorted_bam_path \
                 ~/RNASeq_lab_2_DESeq/Arabidopsis_thaliana.TAIR10.28.gtf \
                 | \
