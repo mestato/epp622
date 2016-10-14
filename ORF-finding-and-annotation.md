@@ -122,5 +122,6 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
     + How many sequences have ORF?
     
         ```{php}
-        grep '^>' *pep | wc -l
+        grep '^>' *pep | wc -l  ## improved
+        grep '^>' ../Trinity.fasta.transdecoder_dir/*pep | wc -l  ## unimproved
         ```
