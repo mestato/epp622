@@ -54,6 +54,7 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
     PATH=$PATH:/lustre/projects/rnaseq_ws/apps/hmmer-3.1b2-linux-intel-x86_64/binaries
     
     mkdir Pfam_search  ## create a directory for the Pfam database
+    cd Pfam_search
     wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
     gunzip Pfam-A.hmm.gz
     hmmpress Pfam-A.hmm ## prepare an HMM database for faster hmmscan searches
@@ -68,7 +69,30 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
             ./Pfam-A.hmm ../longest_orfs.pep
     ```
     
+* __blastP search__: search a protein database
+
+    + Get software and protein database ready
     
+    ```{php}
+    module load blast
+    module switch blast
+    
+    mkdir uniprot_blastp_search
+    cd uniprot_blastp_search
+    wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+    makeblastdb -in uniprot_sprot.fasta -dbtype prot
+    ```
+    
+    + Run
+    
+    ```{php}
+    blastp  -query longest_orfs.pep  \
+            -db uniprot_sprot.fasta  
+            -max_target_seqs 1 
+            -outfmt 6 
+            -evalue 1e-5 
+            -num_threads 10 > blastp.outfmt6
+    ```
 
 
 ### Improved ORF finding
