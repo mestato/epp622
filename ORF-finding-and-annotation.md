@@ -1,11 +1,11 @@
-### Create a working directory
+#### Create a working directory
 
 ```{php}
 mkdir 18_annotation
 cd 18_annotation/
 ```
 
-### Transcript fasta file (output from trinity assembly)
+#### Transcript fasta file (output from trinity assembly)
 
 ```{php}
 wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trinity.fasta
