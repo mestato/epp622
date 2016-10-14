@@ -47,7 +47,6 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
 ### Functional annotation
 
 * __Pfam search__: search the peptides for protein domains using Pfam.
-
     + Get software and Pfam database ready
         ```{php}
         PATH=$PATH:/lustre/projects/rnaseq_ws/apps/hmmer-3.1b2-linux-intel-x86_64/binaries
@@ -97,8 +96,7 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
 
 ### Improved ORF finding
 
-__*We can include homology searches as ORF retention criteria*__
-
+__*We can include homology searches as ORF retention criteria.*__
     + Create a new directory
         
     ```{php}
