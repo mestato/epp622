@@ -87,10 +87,10 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
         
         ```{php}
         blastp  -query longest_orfs.pep  \
-                -db uniprot_sprot.fasta  
-                -max_target_seqs 1 
-                -outfmt 6 
-                -evalue 1e-5 
+                -db uniprot_sprot.fasta  \
+                -max_target_seqs 1 \
+                -outfmt 6 \
+                -evalue 1e-5    \ 
                 -num_threads 10 > blastp.outfmt6
         ```
 
