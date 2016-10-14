@@ -91,6 +91,7 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
                 -max_target_seqs 1 \
                 -outfmt 6 \
                 -evalue 1e-5  -num_threads 10 > blastp.outfmt6
+        cd ../ ## change directory back to the 18_annotation/ directory
         ```
 
 
@@ -98,4 +99,14 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
 
 __*We can include homology searches as ORF retention criteria*__
 
+```{php}
+mkdir improved_ORF
+cd improved_ORF/
+```
+
+```{php}
+TransDecoder.Predict -t ../Trinity.fasta \
+                     --retain_pfam_hits ../Pfam_search/my_hmmscan.DomainHits.tblr \
+                     --retain_blastp_hits ../uniprot_blastp_search/blastp.outfmt6
+```
 
