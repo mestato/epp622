@@ -1,7 +1,7 @@
 ### Transcript fasta file (from trinity)
 
 ```{php}
-wget 
+wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trinity.fasta
 ```
 
 ### ORF finding
