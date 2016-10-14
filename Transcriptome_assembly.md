@@ -40,35 +40,35 @@ module switch samtools/1.3.1 ## samtools is already loaded, so we need to use sw
 module load bowtie2/2.2.8
 ```
 
-There are a number of required parameters
+* There are a number of required parameters
+  
+  ```{php}
+  --seqType <string>  :type of reads: ( fa, or fq )
+  --max_memory <string>  :suggested max memory to use by Trinity where limiting can be enabled.
+  ```
 
-```{php}
---seqType <string>  :type of reads: ( fa, or fq )
---max_memory <string>  :suggested max memory to use by Trinity where limiting can be enabled.
-```
+* If paired reads:
+  
+  ```{php}
+  --left  <string>    :left reads, one or more file names (separated by commas, no spaces)
+  --right <string>    :right reads, one or more file names (separated by commas, no spaces)
+  ```
 
-If paired reads:
-
-```{php}
---left  <string>    :left reads, one or more file names (separated by commas, no spaces)
---right <string>    :right reads, one or more file names (separated by commas, no spaces)
-```
-
-Or, if unpaired reads:
-
-```{php}
---single <string>   :single reads, one or more file names, comma-delimited (note, if single file contains pairs, can use flag: --run_as_paired )
-```
+* Or, if unpaired reads:
+  
+  ```{php}
+  --single <string>   :single reads, one or more file names, comma-delimited (note, if single file contains pairs, can use flag: --run_as_paired )
+  ```
 
 
-Other parameters of use?
-
-```{php}
---SS_lib_type <string>  :Strand-specific RNA-Seq read orientation.
---min_contig_length <int>  :minimum assembled contig length to report
---CPU <int>  :number of CPUs to use, default: 2
---jaccard_clip high gene density, potential UTR overlap
-```
+* Other parameters of use?
+  
+  ```{php}
+  --SS_lib_type <string>  :Strand-specific RNA-Seq read orientation.
+  --min_contig_length <int>  :minimum assembled contig length to report
+  --CPU <int>  :number of CPUs to use, default: 2
+  --jaccard_clip high gene density, potential UTR overlap
+  ```
 
 
 
