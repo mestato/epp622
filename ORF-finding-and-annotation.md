@@ -60,8 +60,12 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
 
     + Run
     ```{php}
-    hmmscan --tblout my_hmmscan.SeqHits.tblr --domtblout my_hmmscan.DomainHits.tblr -E 1e-5 \
-        ./Pfam-A.hmm ../longest_orfs.pep
+    hmmpress Pfam-A.hmm ## prepare an HMM database for faster hmmscan searches
+    hmmscan -o my_hmmscan.out   \
+            --tblout my_hmmscan.SeqHits.tblr    \
+            --domtblout my_hmmscan.DomainHits.tblr  \ 
+            -E 1e-5 \
+            ./Pfam-A.hmm ../longest_orfs.pep
     ```
 
 
