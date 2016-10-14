@@ -136,7 +136,6 @@ Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg
 
 ```{php}
 PATH=$PATH:/lustre/projects/rnaseq_ws/apps/transrate-1.0.1-linux-x86_64/
-export PATH
 ```
 
 ```{php}
