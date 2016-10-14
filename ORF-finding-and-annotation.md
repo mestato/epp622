@@ -16,10 +16,10 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
 * Installation of  transdecoder
     + It seems newton's transdecoder does not work. It needs some perl module to be installed. So we are going to install it with conda.
 
-    ```{R}
-    conda install transdecoder -y
-    TransDecoder.LongOrfs
-    ```
+        ```{R}
+        conda install transdecoder -y
+        TransDecoder.LongOrfs
+        ```
 
 * Run
     ```{php}
