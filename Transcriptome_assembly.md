@@ -11,8 +11,8 @@ Navigate to our working directory. Lets create a folder for this analysis
 
 ```{php}
 cd ~
-mkdir trainscriptome_trinity_assembly
-cd trainscriptome_trinity_assembly
+mkdir 16_trinity_assembly
+cd 16_trinity_assembly
 ```
 
 Get raw RNAseq data
