@@ -103,6 +103,11 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
         mkdir improved_ORF
         cd improved_ORF/
         ```
+    + Create a softlink to the __Trinity.fasta.transdecoder_dir__ directory in our current directory
+    
+        ```
+        ln -s ../Trinity.fasta.transdecoder_dir/ .
+        ```
         
     + Run
         
