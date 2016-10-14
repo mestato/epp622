@@ -51,4 +51,8 @@ grep '^>' ../Trinity.fasta | wc -l
 grep '^>' *pep | wc -l
 ```
 
+### Improved ORF finding
+
+__*We can include include homology searches as ORF retention criteria*__
+
 
