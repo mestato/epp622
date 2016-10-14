@@ -26,11 +26,17 @@ We will be using the assembler Trinity.
 
 ### Run
 
-Install __*trinity*__
+__*Trinity*__ is already installed. We just need to load it.
 
 ```{php}
-conda install trinity -y
-Trinity --help
+module load trinity/2.2.0
+```
+
+We also need samtools and bowtie2 to run trinity assembly.
+
+```{php}
+module switch samtools/1.3.1 ## samtools is already loaded, so we need to use switch command to switch to a different version
+module load bowtie2/2.2.8
 ```
 
 There are a number of required parameters
@@ -69,12 +75,7 @@ Other parameters of use?
 --jaccard_clip high gene density, potential UTR overlap
 ```
 
-Trinity needs to be able to find the software programs bowtie and samtools.
 
-```{php}
- PATH=$PATH:/lustre/projects/rnaseq_ws/apps/bowtie-1.1.1
- PATH=$PATH:/lustre/projects/rnaseq_ws/apps/samtools-1.1/
-```
 
 The default java version is 1.8. We need to load java 1.7 for trinity.
 
@@ -92,12 +93,12 @@ Now we have figured out all our parameters, so lets run the assembly software. W
 #$ -l mem=7G
 #$ -q medium*
 
- PATH=$PATH:/lustre/projects/rnaseq_ws/apps/bowtie-1.1.1
- PATH=$PATH:/lustre/projects/rnaseq_ws/apps/samtools-1.1/
+module switch samtools/1.3.1 ## samtools is already loaded, so we need to use switch command to switch to a different version
+module load bowtie2/2.2.8
+module load java/jre7u60 
+module load trinity/2.2.0
 
- module load java/jre7u60 
- 
-~/anaconda2/bin/Trinity \
+Trinity \
  --seqType fq \
  --max_memory 6G \
  --left allR1.fastq \
