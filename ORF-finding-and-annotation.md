@@ -79,6 +79,7 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
         mkdir uniprot_blastp_search
         cd uniprot_blastp_search
         wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+        gunzip uniprot_sprot.fasta.gz
         makeblastdb -in uniprot_sprot.fasta -dbtype prot
         ```
     
