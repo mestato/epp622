@@ -101,8 +101,8 @@ module load trinity/2.2.0
 Trinity \
  --seqType fq \
  --max_memory 6G \
- --left allR1.fastq \
- --right allR2.fastq \
+ --left DRR016125_1.1percent.fastq \
+ --right DRR016125_2.1percent.fastq \
  --SS_lib_type FR \
  --CPU 1 \
  --min_contig_length 60 \
