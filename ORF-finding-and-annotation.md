@@ -66,6 +66,7 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
                 --domtblout my_hmmscan.DomainHits.tblr  \ 
                 -E 1e-5 \
                 ./Pfam-A.hmm ../longest_orfs.pep
+        cd ../ ## change directory back to the 18_annotation/ directory
         ```
     
 * __blastP search__: search a protein database
