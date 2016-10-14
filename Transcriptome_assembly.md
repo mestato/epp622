@@ -18,7 +18,8 @@ cd 16_trinity_assembly
 Get raw RNAseq data
 
 ```{php}
-cp -r /data/home/mchen33/EPP622_2016_fall/0_raw_reads .
+cp -r /data/home/mchen33/EPP622_2016_fall/0_raw_reads/DRR016125* .
+cp -r /data/home/mchen33/EPP622_2016_fall/0_raw_reads/DRR016126* .
 ```
 
 We will be using the assembler Trinity.
@@ -59,12 +60,6 @@ Or, if unpaired reads:
 --single <string>   :single reads, one or more file names, comma-delimited (note, if single file contains pairs, can use flag: --run_as_paired )
 ```
 
-So we will need to get all the forward reads in one file, and all the reverse reads in another. So lets concatenate the raw reads files
-
-```
- cat 0_raw_reads/*1.1percent.fastq > allR1.fastq
- cat 0_raw_reads/*2.1percent.fastq> allR2.fastq
-```
 
 Other parameters of use?
 
@@ -101,8 +96,8 @@ module load trinity/2.2.0
 Trinity \
  --seqType fq \
  --max_memory 6G \
- --left DRR016125_1.1percent.fastq \
- --right DRR016125_2.1percent.fastq \
+ --left DRR016125_1.1percent.fastq,DRR016126_1.1percent.fastq \
+ --right DRR016125_2.1percent.fastq,DRR016126_2.1percent.fastq \
  --SS_lib_type FR \
  --CPU 1 \
  --min_contig_length 60 \
