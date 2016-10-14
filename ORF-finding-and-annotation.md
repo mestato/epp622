@@ -39,10 +39,10 @@ longest_orfs.gff3  : positions of all ORFs as found in the target transcripts
 longest_orfs.cds   : the nucleotide coding sequence for all detected ORFs
 ```
 
-* How many sequences in the transcript fasta file?
+* How many contigs in the transcript fasta file?
 
 ```{php}
-grep '^>' Trinity.fasta | wc -l
+grep '^>' ../Trinity.fasta | wc -l
 ```
 
 * How many sequences have ORF?
