@@ -140,5 +140,7 @@ export PATH
 ```
 
 ```{php}
-transrate --assembly trinity_out_dir/Trinity.fasta --left allR1.fastq --right allR2.fastq > transrate_output
+transrate --assembly trinity_out_dir/Trinity.fasta \
+          --left DRR016125_1.1percent.fastq,DRR016126_1.1percent.fastq 
+          --right DRR016125_2.1percent.fastq,DRR016126_2.1percent.fastq > transrate_output
 ```
