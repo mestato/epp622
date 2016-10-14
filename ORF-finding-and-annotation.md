@@ -117,3 +117,10 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
                              --retain_blastp_hits ../uniprot_blastp_search/blastp.outfmt6
         ```
 
+* Results
+
+    + How many sequences have ORF?
+    
+        ```{php}
+        grep '^>' *pep | wc -l
+        ```
