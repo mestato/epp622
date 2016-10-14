@@ -49,24 +49,26 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
 
 * __Pfam search__: search the peptides for protein domains using Pfam.
 
-    + Get Pfam database and software ready
+    + Get software and Pfam database ready
     ```{php}
+    PATH=$PATH:/lustre/projects/rnaseq_ws/apps/hmmer-3.1b2-linux-intel-x86_64/binaries
+    
     mkdir Pfam_search  ## create a directory for the Pfam database
     wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
     gunzip Pfam-A.hmm.gz
-    
-    PATH=$PATH:/lustre/projects/rnaseq_ws/apps/hmmer-3.1b2-linux-intel-x86_64/binaries
+    hmmpress Pfam-A.hmm ## prepare an HMM database for faster hmmscan searches
     ```
 
     + Run
     ```{php}
-    hmmpress Pfam-A.hmm ## prepare an HMM database for faster hmmscan searches
     hmmscan -o my_hmmscan.out   \
             --tblout my_hmmscan.SeqHits.tblr    \
             --domtblout my_hmmscan.DomainHits.tblr  \ 
             -E 1e-5 \
             ./Pfam-A.hmm ../longest_orfs.pep
     ```
+    
+    
 
 
 ### Improved ORF finding
