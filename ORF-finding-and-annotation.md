@@ -96,7 +96,7 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
 
 ### Improved ORF finding
 
-__*We can include homology searches as ORF retention criteria.*__
+* We can include homology searches as ORF retention criteria.
     + Create a new directory
     
         ```{php}
