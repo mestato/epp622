@@ -51,8 +51,28 @@ grep '^>' ../Trinity.fasta | wc -l
 grep '^>' *pep | wc -l
 ```
 
+### Functional annotation
+
+* __Pfam search__: search the peptides for protein domains using Pfam.
+
+    + Get Pfam database and software ready
+    ```{php}
+    mkdir Pfam_search  ## create a directory for the Pfam database
+    wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
+    gunzip Pfam-A.hmm.gz
+    
+    PATH=$PATH:/lustre/projects/rnaseq_ws/apps/hmmer-3.1b2-linux-intel-x86_64/binaries
+    ```
+
+    + Run
+    ```{php}
+    hmmscan --tblout my_hmmscan.SeqHits.tblr --domtblout my_hmmscan.DomainHits.tblr -E 1e-5 \
+        ./Pfam-A.hmm ../longest_orfs.pep
+    ```
+
+
 ### Improved ORF finding
 
-__*We can include include homology searches as ORF retention criteria*__
+__*We can include homology searches as ORF retention criteria*__
 
 
