@@ -134,12 +134,31 @@ Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg
 
 ### Assessing quality of assembly with Transrate
 
-```{php}
-PATH=$PATH:/lustre/projects/rnaseq_ws/apps/transrate-1.0.1-linux-x86_64/
-```
+* Get software ready
 
-```{php}
-transrate --assembly trinity_out_dir/Trinity.fasta \
-          --left DRR016125_1.1percent.fastq,DRR016126_1.1percent.fastq  \
-          --right DRR016125_2.1percent.fastq,DRR016126_2.1percent.fastq > transrate_output
-```
+  ```{php}
+  PATH=$PATH:/lustre/projects/rnaseq_ws/apps/transrate-1.0.1-linux-x86_64/
+  ```
+
+* Run
+  
+  ```{php}
+  transrate --assembly trinity_out_dir/Trinity.fasta \
+            --left DRR016125_1.1percent.fastq,DRR016126_1.1percent.fastq  \
+            --right DRR016125_2.1percent.fastq,DRR016126_2.1percent.fastq > transrate_output
+  ```
+  
+* Results
+
+  ```{php}
+  cat 
+  ```
+  
+* Modify results to make it more readable
+
+  ```{php}
+  head -1 assemblies.csv | awk 'BEGIN {FS=",";}{for(i=1;i<=NF;i+=1){print $i"\t\t\t\t"}}' > field_name.txt
+  tail -1 assemblies.csv | awk 'BEGIN {FS=",";}{for(i=1;i<=NF;i+=1){print $i}}' > field_value.txt
+  paste field_name.txt field_value.txt | column -s $'\t' -t
+  ```
+
