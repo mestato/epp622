@@ -140,6 +140,6 @@ PATH=$PATH:/lustre/projects/rnaseq_ws/apps/transrate-1.0.1-linux-x86_64/
 
 ```{php}
 transrate --assembly trinity_out_dir/Trinity.fasta \
-          --left DRR016125_1.1percent.fastq,DRR016126_1.1percent.fastq 
+          --left DRR016125_1.1percent.fastq,DRR016126_1.1percent.fastq  \
           --right DRR016125_2.1percent.fastq,DRR016126_2.1percent.fastq > transrate_output
 ```
