@@ -117,6 +117,14 @@ cp -r /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy/Trinity.fa
                              --retain_pfam_hits ../Pfam_search/my_hmmscan.DomainHits.tblr \
                              --retain_blastp_hits ../uniprot_blastp_search/blastp.outfmt6
         ```
+        
+    + Run this if the Pfam search takes too long to finish!
+    
+        ```{php}
+        TransDecoder.Predict -t ../Trinity.fasta \
+                             --retain_blastp_hits ../uniprot_blastp_search/blastp.outfmt6
+        ```    
+    
 
 * Results
 
