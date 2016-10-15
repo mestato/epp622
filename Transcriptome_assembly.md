@@ -96,8 +96,8 @@ module load trinity/2.2.0
 Trinity \
  --seqType fq \
  --max_memory 6G \
- --left DRR016125_1.1percent.fastq,DRR016126_1.1percent.fastq \
- --right DRR016125_2.1percent.fastq,DRR016126_2.1percent.fastq \
+ --left DRR016125_1.1percent.fastq \
+ --right DRR016125_2.1percent.fastq \
  --SS_lib_type FR \
  --CPU 1 \
  --min_contig_length 60 \
@@ -144,8 +144,8 @@ Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg
   
   ```{php}
   transrate --assembly trinity_out_dir/Trinity.fasta \
-            --left DRR016125_1.1percent.fastq,DRR016126_1.1percent.fastq  \
-            --right DRR016125_2.1percent.fastq,DRR016126_2.1percent.fastq > transrate_output
+            --left DRR016125_1.1percent.fastq  \
+            --right DRR016125_2.1percent.fastq > transrate_output
   ```
   
 * Results
