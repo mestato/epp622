@@ -8,7 +8,7 @@ cd 18_annotation/
 #### Transcript fasta file (output from trinity assembly)
 
 ```{php}
-wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trinity.fasta
+cp -r /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy/Trinity.fasta ./
 ```
 
 ### ORF finding
@@ -20,11 +20,6 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
         conda install transdecoder -y
         TransDecoder.LongOrfs
         ```
-
-* Get Trinity.fasta data
-    ```{php}
-    cp -r /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy/Trinity.fasta ./
-    ```
     
 * Run
     ```{php}
