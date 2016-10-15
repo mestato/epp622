@@ -145,7 +145,7 @@ Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg
   cd ~
   mkdir 17_transrate_assessment
   cd 17_transrate_assessment
-  cp /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir ./  ## copy trinity results
+  cp /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy ./  ## copy trinity results
   cp /data/home/mchen33/RNASeq_trinity_assembly/0_raw_reads/DRR016125* ./  ## copy raw reads
   ```
   
