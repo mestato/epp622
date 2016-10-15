@@ -119,10 +119,17 @@ The assembled transcripts can be found in
   ./trinity_out_dir/Trinity.fasta
 ```
 
+The trinity assembly will take hours to finish even with very small datasets. We are going to use the results I generated a few days ago.
+
+```{php}
+cp /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy ./  ## copy trinity results
+```
+
 A quick one line command to check the number of seqeunces in the file
 
 ```{php}
- grep -c '^>' Trinity.fasta
+cd trinity_out_dir_copy
+grep -c '^>' Trinity.fasta
 ```
 
 Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg wrote a perl script that can report statistics about the file.
@@ -139,7 +146,7 @@ Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg
   PATH=$PATH:/lustre/projects/rnaseq_ws/apps/transrate-1.0.1-linux-x86_64/
   ```
 
-* Get Trinity results (The trinity assembly will take hours to finish even with very small datasets. We are going to use the results I generated a few days ago.)
+* Get Trinity results 
 
   ```{php}
   cd ~
