@@ -139,6 +139,16 @@ Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg
   PATH=$PATH:/lustre/projects/rnaseq_ws/apps/transrate-1.0.1-linux-x86_64/
   ```
 
+* Get Trinity results (The trinity assembly will take hours to finish even with very small datasets. We are going to use the results I generated a few days ago.)
+
+  ```{php}
+  cd ~
+  mkdir 17_transrate_assessment
+  cd 17_transrate_assessment
+  cp /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir ./  ## copy trinity results
+  cp /data/home/mchen33/RNASeq_trinity_assembly/0_raw_reads/DRR016125* ./  ## copy raw reads
+  ```
+  
 * Run
   
   ```{php}
