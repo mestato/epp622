@@ -1,6 +1,7 @@
 #### Create a working directory
 
 ```{php}
+cd ~
 mkdir 18_annotation
 cd 18_annotation/
 ```
