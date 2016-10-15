@@ -21,6 +21,11 @@ wget https://raw.githubusercontent.com/mestato/epp622/master/RNA_labs_data/Trini
         TransDecoder.LongOrfs
         ```
 
+* Get Trinity.fasta data
+    ```{php}
+    cp -r /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy/Trinity.fasta ./
+    ```
+    
 * Run
     ```{php}
     TransDecoder.LongOrfs -t Trinity.fasta
