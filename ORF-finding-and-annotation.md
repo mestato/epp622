@@ -17,7 +17,7 @@ cp -r /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy/Trinity.fa
 * Installation of  transdecoder
     + It seems newton's transdecoder does not work. It needs some perl module to be installed. So we are going to install it with conda.
 
-        ```{R}
+        ```{php}
         conda install transdecoder -y
         TransDecoder.LongOrfs
         ```
