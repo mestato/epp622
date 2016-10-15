@@ -19,7 +19,6 @@ Get raw RNAseq data
 
 ```{php}
 cp -r /data/home/mchen33/EPP622_2016_fall/0_raw_reads/DRR016125* .
-cp -r /data/home/mchen33/EPP622_2016_fall/0_raw_reads/DRR016126* .
 ```
 
 We will be using the assembler Trinity.
