@@ -158,13 +158,14 @@ Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg
 * Results
 
   ```{php}
-  cat 
+  cd transrate_results
+  cat assemblies.csv
   ```
   
 * Modify results to make it more readable
 
   ```{php}
-  head -1 assemblies.csv | awk 'BEGIN {FS=",";}{for(i=1;i<=NF;i+=1){print $i"\t\t\t\t"}}' > field_name.txt
+  head -1 assemblies.csv | awk 'BEGIN {FS=",";}{for(i=1;i<=NF;i+=1){print $i}}' > field_name.txt
   tail -1 assemblies.csv | awk 'BEGIN {FS=",";}{for(i=1;i<=NF;i+=1){print $i}}' > field_value.txt
   paste field_name.txt field_value.txt | column -s $'\t' -t
   ```
