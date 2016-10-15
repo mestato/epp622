@@ -68,7 +68,7 @@ cp -r /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy/Trinity.fa
         cd ../ ## change directory back to the 18_annotation/ directory
         ```
     
-* __blastP search__: search a protein database
+* __blastP search__: search a protein database (Open a new terminal)
 
     + Get software and protein database ready
         
