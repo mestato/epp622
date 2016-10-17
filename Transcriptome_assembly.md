@@ -87,10 +87,11 @@ Now we have figured out all our parameters, so lets run the assembly software. W
 #$ -l mem=7G
 #$ -q medium*
 
-module switch samtools/1.3.1 ## samtools is already loaded, so we need to use switch command to switch to a different version
+
 module load bowtie2/2.2.8
 module load java/jre7u60 
 module load trinity/2.2.0
+module switch samtools/1.3.1 ## samtools is already loaded, so we need to use switch command to switch to a different version
 
 Trinity \
  --seqType fq \
