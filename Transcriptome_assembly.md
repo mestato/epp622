@@ -1,24 +1,19 @@
-### Set Up
+### Working directories
 
-We will need slightly more memory to run a de novo assembly, so lets request an interactive session with 7Gb of RAM
-
-```{php}
- qrsh -l mem=7G -q medium*
-```
-
-
-Navigate to our working directory. Lets create a folder for this analysis
+Create some directories for our analysis.
 
 ```{php}
 cd ~
-mkdir 16_trinity_assembly
-cd 16_trinity_assembly
+mkdir lesson_16
+cd lesson_16
+mkdir raw_data
+mkdir trinity_assembly
 ```
 
 Get raw RNAseq data
 
 ```{php}
-cp -r /data/home/mchen33/EPP622_2016_fall/0_raw_reads/DRR016125* .
+cp -r /data/home/mchen33/EPP622_2016_fall/0_raw_reads/DRR016125* ./raw_data
 ```
 
 We will be using the assembler Trinity.
@@ -68,15 +63,6 @@ module load bowtie2/2.2.8
   --CPU <int>  :number of CPUs to use, default: 2
   --jaccard_clip high gene density, potential UTR overlap
   ```
-
-
-
-The default java version is 1.8. We need to load java 1.7 for trinity.
-
-```{php}
-module load java/jre7u60
-java -version ## check java version
-```
 
 Now we have figured out all our parameters, so lets run the assembly software. We will give it 6Gb of RAM instead of 7Gb so that it does not use too much and kill the interactive session. Create a script file named `trinity_assembly.qsh` which has the following code in it.
 
