@@ -16,6 +16,13 @@ Get raw RNAseq data
 cp -r /data/home/mchen33/EPP622_2016_fall/0_raw_reads/DRR016125* ./raw_data
 ```
 
+Create soft links within the analysis directory
+
+```{php}
+cd trinity_assembly/
+ln -s ../raw_data/* .
+```
+
 We will be using the assembler Trinity.
 
 
