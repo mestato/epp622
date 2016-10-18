@@ -129,7 +129,7 @@ Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg
 * Get software ready
 
   ```{php}
-  PATH=$PATH:/lustre/projects/rnaseq_ws/apps/transrate-1.0.1-linux-x86_64/
+  module load transrate 
   ```
 
   
@@ -149,7 +149,8 @@ Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg
   ```
   
 * Modify results to make it more readable
-
+  + option 1: copty and paste it into excel or google sheet
+  + option 2: write a script
   ```{php}
   head -1 assemblies.csv | awk 'BEGIN {FS=",";}{for(i=1;i<=NF;i+=1){print $i}}' > field_name.txt
   tail -1 assemblies.csv | awk 'BEGIN {FS=",";}{for(i=1;i<=NF;i+=1){print $i}}' > field_value.txt
