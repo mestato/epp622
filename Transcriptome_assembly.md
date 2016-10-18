@@ -115,8 +115,7 @@ cp -r /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy ./  ## cop
 A quick one line command to check the number of seqeunces in the file
 
 ```{php}
-cd trinity_out_dir_copy
-grep -c '^>' Trinity.fasta
+grep -c '^>' ./trinity_out_dir_copy/Trinity.fasta
 ```
 
 Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg wrote a perl script that can report statistics about the file.
