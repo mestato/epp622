@@ -60,7 +60,6 @@ ln -s ../raw_data/Trinity.fasta .
 * __Pfam search__: search the peptides for protein domains using Pfam.
     + Get software and Pfam database ready
         ```{php}
-        ## PATH=$PATH:/lustre/projects/rnaseq_ws/apps/hmmer-3.1b2-linux-intel-x86_64/binaries
         module load hmmer
         
         mkdir Pfam_search  ## create a directory for the Pfam database
