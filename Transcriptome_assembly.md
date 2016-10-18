@@ -34,13 +34,6 @@ __*Trinity*__ is already installed. We just need to load it.
 module load trinity/2.2.0
 ```
 
-We also need samtools and bowtie2 to run trinity assembly.
-
-```{php}
-module switch samtools/1.3.1 ## samtools is already loaded, so we need to use switch command to switch to a different version
-module load bowtie2/2.2.8
-```
-
 * There are a number of required parameters
   
   ```{php}
