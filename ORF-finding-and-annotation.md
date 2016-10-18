@@ -11,7 +11,7 @@ mkdir annotation
 #### Transcript fasta file (output from trinity assembly)
 
 ```{php}
-cp -r /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy/Trinity.fasta ./annotation/
+cp /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy/Trinity.fasta ./raw_data/
 ```
 
 ### ORF finding
