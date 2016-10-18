@@ -16,12 +16,18 @@ cp /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy/Trinity.fasta
 
 ### ORF finding
 
-* Installation of  transdecoder
-    + It seems newton's transdecoder does not work. It needs some perl module to be installed. So we are going to install it with conda.
+* Get *transdecoder* ready
+    + (option 1) If you have anaconda installed, install *transdecoder* with conda
 
         ```{php}
         conda install transdecoder -y
         TransDecoder.LongOrfs
+        ```
+        
+    + (option 2) If you don't have anaconda
+    
+        ```{php}
+        module load transdecoder
         ```
     
 * Run
