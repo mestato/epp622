@@ -119,12 +119,6 @@ A quick one line command to check the number of seqeunces in the file
 grep -c '^>' ./trinity_out_dir_copy/Trinity.fasta
 ```
 
-Most of the output files can be ignored. Lets keep looking at Trinity.fasta. Meg wrote a perl script that can report statistics about the file.
-
-```{php}
- /lustre/projects/rnaseq_ws/apps/fasta_file_stats.pl Trinity.fasta
-```
-
 ### Assessing quality of assembly with Transrate
 
 * Get software ready
