@@ -32,6 +32,7 @@ __*Trinity*__ is already installed. We just need to load it.
 
 ```{php}
 module load trinity/2.2.0
+Trinity ## display help documentation
 ```
 
 * There are a number of required parameters
