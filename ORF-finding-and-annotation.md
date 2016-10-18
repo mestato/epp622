@@ -2,14 +2,16 @@
 
 ```{php}
 cd ~
-mkdir 18_annotation
-cd 18_annotation/
+mkdir lesson_18
+cd lesson_18
+mkdir raw_data
+mkdir annotation
 ```
 
 #### Transcript fasta file (output from trinity assembly)
 
 ```{php}
-cp -r /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy/Trinity.fasta ./
+cp -r /data/home/mchen33/RNASeq_trinity_assembly/trinity_out_dir_copy/Trinity.fasta ./annotation/
 ```
 
 ### ORF finding
