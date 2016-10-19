@@ -152,3 +152,4 @@ grep -c '^>' ./trinity_out_dir_copy/Trinity.fasta
   paste field_name.txt field_value.txt | column -s $'\t' -t
   ```
 
+* More transrate metrics description [http://hibberdlab.com/transrate/metrics.html](http://hibberdlab.com/transrate/metrics.html)
