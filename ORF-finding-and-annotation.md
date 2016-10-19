@@ -76,7 +76,7 @@ ln -s ../raw_data/Trinity.fasta .
                 -E 1e-5 \
                 --cpu 2 \
                 ./Pfam-A.hmm ../Trinity.fasta.transdecoder_dir/longest_orfs.pep
-        cd ../ ## change directory back to the 18_annotation/ directory
+        cd ../ ## change directory back to the annotation/ directory
         ```
     
 * __blastP search__: search a protein database (Open a new terminal)
@@ -102,7 +102,7 @@ ln -s ../raw_data/Trinity.fasta .
                 -max_target_seqs 1 \
                 -outfmt 6 \
                 -evalue 1e-5  -num_threads 10 > blastp.outfmt6
-        cd ../ ## change directory back to the 18_annotation/ directory
+        cd ../ ## change directory back to the annotation/ directory
         ```
 
 
