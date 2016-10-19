@@ -74,6 +74,7 @@ ln -s ../raw_data/Trinity.fasta .
         hmmscan -o my_hmmscan.out --tblout my_hmmscan.SeqHits.tblr \
                 --domtblout my_hmmscan.DomainHits.tblr \
                 -E 1e-5 \
+                --cpu 2 \
                 ./Pfam-A.hmm ../Trinity.fasta.transdecoder_dir/longest_orfs.pep
         cd ../ ## change directory back to the 18_annotation/ directory
         ```
